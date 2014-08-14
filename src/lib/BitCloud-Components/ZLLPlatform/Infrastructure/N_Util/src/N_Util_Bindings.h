@@ -1,0 +1,1 @@
+#define N_Util_Random N_Util_Random_Impl

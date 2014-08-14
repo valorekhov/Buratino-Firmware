@@ -1,0 +1,1860 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>6.2</ProjectVersion>
+    <ToolchainName>com.Atmel.AVRGCC8.C</ToolchainName>
+    <ProjectGuid>{df117915-4f20-46a6-8f7f-d9411f9a76f4}</ProjectGuid>
+    <avrdevice>ATmega256RFR2</avrdevice>
+    <avrdeviceseries>none</avrdeviceseries>
+    <OutputType>Executable</OutputType>
+    <Language>C</Language>
+    <OutputFileName>$(MSBuildProjectName)</OutputFileName>
+    <OutputFileExtension>.elf</OutputFileExtension>
+    <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
+    <AssemblyName>Buratino-Firmware</AssemblyName>
+    <Name>Buratino-Firmware</Name>
+    <RootNamespace>Buratino-Firmware</RootNamespace>
+    <ToolchainFlavour>Native</ToolchainFlavour>
+    <KeepTimersRunning>true</KeepTimersRunning>
+    <OverrideVtor>false</OverrideVtor>
+    <CacheFlash>true</CacheFlash>
+    <ProgFlashFromRam>true</ProgFlashFromRam>
+    <RamSnippetAddress>0x20000000</RamSnippetAddress>
+    <UncachedRange />
+    <OverrideVtorValue>exception_table</OverrideVtorValue>
+    <BootSegment>2</BootSegment>
+    <eraseonlaunchrule>0</eraseonlaunchrule>
+    <AsfFrameworkConfig>
+      <framework-data xmlns="">
+        <options />
+        <configurations />
+        <files />
+        <documentation help="" />
+        <offline-documentation help="" />
+        <dependencies>
+          <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.19.0" />
+        </dependencies>
+      </framework-data>
+    </AsfFrameworkConfig>
+    <avrtool>com.atmel.avrdbg.tool.atmelice</avrtool>
+    <com_atmel_avrdbg_tool_atmelice>
+      <ToolOptions>
+        <InterfaceProperties>
+          <JtagDbgClock>200000</JtagDbgClock>
+        </InterfaceProperties>
+        <InterfaceName>JTAG</InterfaceName>
+      </ToolOptions>
+      <ToolType>com.atmel.avrdbg.tool.atmelice</ToolType>
+      <ToolNumber>J41800004738</ToolNumber>
+      <ToolName>Atmel-ICE</ToolName>
+    </com_atmel_avrdbg_tool_atmelice>
+    <avrtoolinterface>JTAG</avrtoolinterface>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <ToolchainSettings>
+      <AvrGcc>
+        <avrgcc.common.optimization.RelaxBranches>True</avrgcc.common.optimization.RelaxBranches>
+        <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
+        <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
+        <avrgcc.common.outputfiles.eep>True</avrgcc.common.outputfiles.eep>
+        <avrgcc.common.outputfiles.srec>True</avrgcc.common.outputfiles.srec>
+        <avrgcc.common.outputfiles.usersignatures>False</avrgcc.common.outputfiles.usersignatures>
+        <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
+        <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
+        <avrgcc.compiler.symbols.DefSymbols>
+          <ListValues>
+            <Value>NDEBUG</Value>
+          </ListValues>
+        </avrgcc.compiler.symbols.DefSymbols>
+        <avrgcc.compiler.optimization.level>Optimize for size (-Os)</avrgcc.compiler.optimization.level>
+        <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
+        <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
+        <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+        <avrgcc.linker.libraries.Libraries>
+          <ListValues>
+            <Value>libm</Value>
+            <Value>libBc_All_StdlinkSec_Atmega256rfr2_Atmega256rfr2_Gcc.a</Value>
+            <Value>libHAL_MegaRf_Atmega256rfr2_8Mhz_Gcc.a</Value>
+            <Value>WdtInitatmega256rfr2_Gcc.o</Value>
+          </ListValues>
+        </avrgcc.linker.libraries.Libraries>
+        <avrgcc.linker.libraries.LibrarySearchPaths>
+          <ListValues>
+            <Value>C:\Users\val.PORTALSOLUTIONS\Documents\GitHub\Buratino-Firmware\src\lib</Value>
+          </ListValues>
+        </avrgcc.linker.libraries.LibrarySearchPaths>
+      </AvrGcc>
+    </ToolchainSettings>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <ToolchainSettings>
+      <AvrGcc>
+  <avrgcc.common.optimization.RelaxBranches>True</avrgcc.common.optimization.RelaxBranches>
+  <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
+  <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
+  <avrgcc.common.outputfiles.eep>True</avrgcc.common.outputfiles.eep>
+  <avrgcc.common.outputfiles.srec>True</avrgcc.common.outputfiles.srec>
+  <avrgcc.common.outputfiles.usersignatures>False</avrgcc.common.outputfiles.usersignatures>
+  <avrgcc.compiler.symbols.DefSymbols>
+    <ListValues>
+      <Value>DEBUG</Value>
+    </ListValues>
+  </avrgcc.compiler.symbols.DefSymbols>
+  <avrgcc.compiler.directories.IncludePaths>
+    <ListValues>
+      <Value>../features/occupancySensor/include</Value>
+      <Value>../common/include</Value>
+      <Value>../common/clusters/include</Value>
+      <Value>../lib/BitCloud-Components/BSP/MEGARF/include</Value>
+      <Value>../lib/BitCloud-Components/SystemEnvironment/include</Value>
+      <Value>../lib/BitCloud-Components/HAL/include</Value>
+      <Value>../lib/BitCloud-Components/BSP</Value>
+      <Value>../lib/BitCloud-Components/BSP/include</Value>
+      <Value>../lib/BitCloud-Components/NWK/include</Value>
+      <Value>../lib/BitCloud-Components/NWK/include/private</Value>
+      <Value>../lib/BitCloud-Components/ZDO/include</Value>
+      <Value>../lib/BitCloud-Components/ZDO/include/private</Value>
+      <Value>../lib/BitCloud-Components/APS/include</Value>
+      <Value>../lib/BitCloud-Components/APS/include/private</Value>
+      <Value>../lib/BitCloud-Components/SystemEnvironment/include</Value>
+      <Value>../lib/BitCloud-Components/ConfigServer/include</Value>
+      <Value>../lib/BitCloud-Components/ConfigServer/include/private</Value>
+      <Value>../lib/BitCloud-Components/PersistDataServer/include</Value>
+      <Value>../lib/BitCloud-Components/PersistDataServer/std/include</Value>
+      <Value>../lib/BitCloud-Components/PersistDataServer/wl/include</Value>
+      <Value>../lib/BitCloud-Components/ZLLPlatform/Infrastructure/N_Types/include</Value>
+      <Value>../lib/BitCloud-Components/ZLLPlatform/Infrastructure/N_Util/include</Value>
+      <Value>../lib/BitCloud-Components/ZLLPlatform/Infrastructure/N_Timer/include</Value>
+      <Value>../lib/BitCloud-Components/ZLLPlatform/Infrastructure/N_Task/include</Value>
+      <Value>../lib/BitCloud-Components/ZLLPlatform/Infrastructure/N_ErrH/include</Value>
+      <Value>../lib/BitCloud-Components/ZLLPlatform/Infrastructure/N_Log/include</Value>
+      <Value>../lib/BitCloud-Components/ZLLPlatform/Infrastructure/N_Memory/include</Value>
+      <Value>../lib/BitCloud-Components/ZLLPlatform/Infrastructure/N_Init/include</Value>
+      <Value>../lib/BitCloud-Components/ZLLPlatform/ZLL/S_Nv/include</Value>
+      <Value>../lib/BitCloud-Components/ZLLPlatform/ZLL/D_Nv/include</Value>
+      <Value>../lib/BitCloud-Components/Security/TrustCentre/include</Value>
+      <Value>../lib/BitCloud-Components/Security/ServiceProvider/include</Value>
+      <Value>../lib/BitCloud-Components/HAL/drivers/include</Value>
+      <Value>../lib/BitCloud-Components/HAL/drivers/USBFIFO/include</Value>
+      <Value>../lib/BitCloud-Components/HAL/avr/atmega128rfa1/common/include</Value>
+      <Value>../lib/BitCloud-Components/ZCL/include/private</Value>
+      <Value>../lib/BitCloud-Components/ZCL/include</Value>
+      <Value>../lib/BitCloud-Components/HAL/drivers/include</Value>
+      <Value>../lib/BitCloud-Components/HAL/drivers/OFD/include</Value>
+      <Value>../lib/BitCloud-Components/HAL/drivers/ISD/include</Value>
+      <Value>../lib/BitCloud-Components/HAL/drivers/include</Value>
+      <Value>../lib/BitCloud-Components/HAL/drivers/OFD/include</Value>
+      <Value>../lib/BitCloud-Components/HAL/drivers/ISD/include</Value>
+      <Value>../lib/BitCloud-Components/MAC_PHY/include</Value>
+      <Value>../lib/BitCloud-Components/MAC_PHY/MAC_ENV/include</Value>
+      <Value>../lib/BitCloud-Components/MAC_PHY/MAC_HWI/include</Value>
+      <Value>../lib/BitCloud-Components/MAC_PHY/MAC_HWD_PHY/include</Value>
+      <Value>../lib/BitCloud-Components/MAC_PHY/MAC_HWD_PHY/ATMEGA128RFA1/PHY/include</Value>
+      <Value>../lib/BitCloud-Components/MAC_PHY/MAC_HWD_PHY/ATMEGA128RFA1/MAC_HWD/include</Value>
+    </ListValues>
+  </avrgcc.compiler.directories.IncludePaths>
+  <avrgcc.compiler.optimization.level>Optimize for size (-Os)</avrgcc.compiler.optimization.level>
+  <avrgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>False</avrgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>
+  <avrgcc.compiler.optimization.PrepareDataForGarbageCollection>False</avrgcc.compiler.optimization.PrepareDataForGarbageCollection>
+  <avrgcc.compiler.optimization.DebugLevel>Default (-g2)</avrgcc.compiler.optimization.DebugLevel>
+  <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+  <avrgcc.compiler.miscellaneous.OtherFlags>-std=gnu99 -pipe -c -W -Wall -Wno-int-to-pointer-cast -Wno-pointer-to-int-cast -ffunction-sections -mmcu=atmega256rfr2 -mcall-prologues -fshort-enums -mrelax -D_BINDING_ -D_RF_BAT_MON_  -D_SLEEP_WHEN_IDLE_ -DHAL_8MHz  -DBOARD_MEGARF  -DATMEGA256RFR2  -DSTACK_TYPE_ALL  -DSTDLINK_SECURITY_MODE -include "../configuration.h"</avrgcc.compiler.miscellaneous.OtherFlags>
+  <avrgcc.linker.miscellaneous.LinkerFlags>-Wl,--section-start=.data=0x800200 -Wl,--script=../build/atmega256rfr2.ld -Wl,-( ../lib/libBc_All_StdlinkSec_Atmega256rfr2_Atmega256rfr2_Gcc.a ../lib/libHAL_MegaRf_Atmega256rfr2_8Mhz_Gcc.a ../lib/WdtInitatmega256rfr2_Gcc.o -Wl,-)</avrgcc.linker.miscellaneous.LinkerFlags>
+  <avrgcc.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcc.assembler.debugging.DebugLevel>
+</AvrGcc>
+    </ToolchainSettings>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="commandManager.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="common\clusters\include\basicCluster.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="common\clusters\include\haClusters.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="common\clusters\include\identifyCluster.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="common\clusters\src\haClusters.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="common\include\appConsts.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="common\include\commandManager.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="common\include\console.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="common\include\ezModeManager.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="common\include\keyboardPoll.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="common\include\otauService.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="common\include\uartManager.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="common\include\zclDevice.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="configuration.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="console.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ezModeManager.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="features\occupancySensor\include\osBasicCluster.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="features\occupancySensor\include\osClusters.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="features\occupancySensor\include\osIdentifyCluster.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="features\occupancySensor\include\osOccupancySensingCluster.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="features\occupancySensor\src\occupancySensor.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="features\occupancySensor\src\osBasicCluster.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="features\occupancySensor\src\osClusters.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="features\occupancySensor\src\osConsole.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="features\occupancySensor\src\osIdentifyCluster.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="features\occupancySensor\src\osOccupancySensingCluster.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="features\occupancySensor\src\osPdt.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="keyboardPoll.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\APS\include\aps.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\APS\include\apsAIB.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\APS\include\apsCommandReq.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\APS\include\apsCommon.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\APS\include\apsConfigServer.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\APS\include\apsCryptoKeys.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\APS\include\apsdeData.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\APS\include\apsdeEndpoint.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\APS\include\apsmeAuthenticate.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\APS\include\apsmeBind.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\APS\include\apsmeEstablishKey.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\APS\include\apsmeGroup.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\APS\include\apsmeRemoveDevice.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\APS\include\apsmeRequestKey.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\APS\include\apsmeSwitchKey.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\APS\include\apsmeTransportKey.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\APS\include\apsmeUpdateDevice.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\APS\include\intrpData.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\APS\include\private\apsAuthenticate.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\APS\include\private\apsBinding.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\APS\include\private\apsCommand.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\APS\include\private\apsConfig.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\APS\include\private\apsDataManager.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\APS\include\private\apsDbg.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\APS\include\private\apsEndpoint.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\APS\include\private\apsFrames.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\APS\include\private\apsGroup.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\APS\include\private\apsKeyPairSet.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\APS\include\private\apsMemoryManager.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\APS\include\private\apsRejectDuplicate.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\APS\include\private\apsRemoveDevice.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\APS\include\private\apsRequestKey.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\APS\include\private\apsSkke.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\APS\include\private\apsSkkeInitiator.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\APS\include\private\apsSkkeResponder.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\APS\include\private\apsSmSsp.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\APS\include\private\apsState.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\APS\include\private\apsSwitchKey.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\APS\include\private\apsTaskManager.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\APS\include\private\apsTransportAppKey.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\APS\include\private\apsTransportKey.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\APS\include\private\apsTransportNwkKey.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\APS\include\private\apsTransportTrustKey.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\APS\include\private\apsUpdateDevice.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\BSP\BoardConfig.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\BSP\MEGARF\include\bspDbg.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\BSP\MEGARF\include\bspLeds.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\BSP\MEGARF\include\bspTaskManager.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\BSP\MEGARF\include\buttonsExt.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\BSP\MEGARF\include\hs2xy.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\BSP\MEGARF\include\lcdExt.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\BSP\MEGARF\include\ledsExt.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\BSP\MEGARF\include\maxL.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\BSP\MEGARF\include\xyl2rgb.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\BSP\MEGARF\src\bspTaskManager.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\BSP\MEGARF\src\bspUid.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\BSP\MEGARF\src\buttons.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\BSP\MEGARF\src\fakeBSP.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\BSP\MEGARF\src\hs2xy.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\BSP\MEGARF\src\lcd.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\BSP\MEGARF\src\leds.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\BSP\MEGARF\src\MaxL.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\BSP\MEGARF\src\xyl2rgb.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ConfigServer\include\configServer.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ConfigServer\include\csDefaults.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ConfigServer\include\private\csBuffers.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ConfigServer\include\private\csConstTable.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ConfigServer\include\private\csDbg.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ConfigServer\include\private\csMemTable.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ConfigServer\include\private\csSIB.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ConfigServer\include\private\csVarTable.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ConfigServer\include\stackVersion.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ConfigServer\src\configServer.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ConfigServer\src\csMem.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ConfigServer\src\csPersistentMem.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\avr\atmega128rfa1\common\include\gpio.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\avr\atmega128rfa1\common\include\halAdc.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\avr\atmega128rfa1\common\include\halAppClock.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\avr\atmega128rfa1\common\include\halAssert.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\avr\atmega128rfa1\common\include\halAtomic.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\avr\atmega128rfa1\common\include\halClkCtrl.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\avr\atmega128rfa1\common\include\halDbg.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\avr\atmega128rfa1\common\include\halDelay.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\avr\atmega128rfa1\common\include\halDiagnostic.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\avr\atmega128rfa1\common\include\halEeprom.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\avr\atmega128rfa1\common\include\halFCPU.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\avr\atmega128rfa1\common\include\halFlash.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\avr\atmega128rfa1\common\include\halGccD.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\avr\atmega128rfa1\common\include\halIarD.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\avr\atmega128rfa1\common\include\halInit.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\avr\atmega128rfa1\common\include\halInterrupt.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\avr\atmega128rfa1\common\include\halIrq.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\avr\atmega128rfa1\common\include\halMacIsr.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\avr\atmega128rfa1\common\include\halPwm.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\avr\atmega128rfa1\common\include\halRfCtrl.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\avr\atmega128rfa1\common\include\halSecurityModule.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\avr\atmega128rfa1\common\include\halSleep.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\avr\atmega128rfa1\common\include\halSleepTimerClock.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\avr\atmega128rfa1\common\include\halSpDriver.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\avr\atmega128rfa1\common\include\halSpi.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\avr\atmega128rfa1\common\include\halTwi.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\avr\atmega128rfa1\common\include\halUsart.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\avr\atmega128rfa1\common\include\halW1.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\avr\atmega128rfa1\common\include\halWdt.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\drivers\ISD\include\isdConsoleTunneling.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\drivers\ISD\src\isdConsoleTunneling.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\drivers\ISD\src\isdImageStorage.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\drivers\OFD\include\ofdMemoryDriver.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\drivers\OFD\src\ofdAt25Driver.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\drivers\OFD\src\ofdAt45dbDriver.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\drivers\OFD\src\ofdCommand.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\drivers\OFD\src\ofdCrcService.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\drivers\OFD\src\ofdFakeDriver.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\drivers\OFD\src\ofdIntFlashRead.s">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\drivers\OFD\src\ofdSpiSerializer.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\drivers\USBFIFO\include\usbFifoVirtualUsart.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\drivers\USBFIFO\src\usbFifoFT245RL.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\drivers\USBFIFO\src\usbFifoVirtualUsart.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\include\adc.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\include\appTimer.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\include\atomic.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\include\bcTimer.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\include\calibration.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\include\dbgu.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\include\eeprom.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\include\flash.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\include\halInit.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\include\halTaskManager.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\include\hsmci.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\include\i2cPacket.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\include\irq.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\include\pwm.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\include\reducePower.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\include\resetReason.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\include\sleep.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\include\sleepTimer.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\include\spi.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\include\stdioAdapter.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\include\uart.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\include\usart.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\include\usb.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\include\w1.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\HAL\include\wdtCtrl.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\include\mac.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\include\macAddr.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\include\macAffix.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\include\macAssociate.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\include\macBanNode.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\include\macBeacon.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\include\macBuffers.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\include\macCommon.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\include\macCommStatus.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\include\macData.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\include\macDbg.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\include\macDisassociate.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\include\macEnvironment.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\include\macFrame.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\include\macMem.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\include\macOrphan.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\include\macphyPib.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\include\macPoll.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\include\macPurge.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\include\macReset.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\include\macRxEnable.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\include\macScan.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\include\macSetGet.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\include\macStart.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\include\macSuperframe.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\include\macSync.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\include\phy.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\include\rfBattery.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\include\rfCalibration.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\include\rfEncrypt.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\include\rfInit.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\include\rfRandom.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\include\rfRegAccess.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_ENV\include\macenvMem.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_ENV\include\macenvPib.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\ATMEGA128RFA1\MAC_HWD\include\machwdBatMonHandler.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\ATMEGA128RFA1\MAC_HWD\include\machwdCalibHandler.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\ATMEGA128RFA1\MAC_HWD\include\machwdEdHandler.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\ATMEGA128RFA1\MAC_HWD\include\machwdEncryptHandler.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\ATMEGA128RFA1\MAC_HWD\include\machwdFrameRoutine.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\ATMEGA128RFA1\MAC_HWD\include\machwdHandlerCtrl.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\ATMEGA128RFA1\MAC_HWD\include\machwdManager.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\ATMEGA128RFA1\MAC_HWD\include\machwdMem.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\ATMEGA128RFA1\MAC_HWD\include\machwdMemAccess.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\ATMEGA128RFA1\MAC_HWD\include\machwdRegAccessHandler.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\ATMEGA128RFA1\MAC_HWD\include\machwdResetHandler.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\ATMEGA128RFA1\MAC_HWD\include\machwdRndHandler.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\ATMEGA128RFA1\MAC_HWD\include\machwdRxBuffer.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\ATMEGA128RFA1\MAC_HWD\include\machwdRxFrameHandler.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\ATMEGA128RFA1\MAC_HWD\include\machwdSetHandler.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\ATMEGA128RFA1\MAC_HWD\include\machwdTrxCtrl.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\ATMEGA128RFA1\MAC_HWD\include\machwdTrxHandler.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\ATMEGA128RFA1\MAC_HWD\include\machwdTxFrameHandler.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\ATMEGA128RFA1\PHY\include\atmega128rfa1.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\ATMEGA128RFA1\PHY\include\phyAntDiversity.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\ATMEGA128RFA1\PHY\include\phyBatMon.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\ATMEGA128RFA1\PHY\include\phyCalib.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\ATMEGA128RFA1\PHY\include\phyCommon.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\ATMEGA128RFA1\PHY\include\phyDataStatus.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\ATMEGA128RFA1\PHY\include\phyEd.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\ATMEGA128RFA1\PHY\include\phyInit.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\ATMEGA128RFA1\PHY\include\phyMem.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\ATMEGA128RFA1\PHY\include\phyMemAccess.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\ATMEGA128RFA1\PHY\include\phyRegAccess.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\ATMEGA128RFA1\PHY\include\phyReset.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\ATMEGA128RFA1\PHY\include\phyRfIrqDispatcher.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\ATMEGA128RFA1\PHY\include\phyRnd.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\ATMEGA128RFA1\PHY\include\phyRtimerIrqDispatcher.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\ATMEGA128RFA1\PHY\include\phyRxFrame.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\ATMEGA128RFA1\PHY\include\phyRxTxIndicator.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\ATMEGA128RFA1\PHY\include\phySet.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\ATMEGA128RFA1\PHY\include\phySetTrxState.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\ATMEGA128RFA1\PHY\include\phyStateMachine.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\ATMEGA128RFA1\PHY\include\phyTxFrame.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\ATMEGA128RFA1\PHY\include\phyTxPowerConverter.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\include\machwd.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\include\machwdBatMon.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\include\machwdCalibration.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\include\machwdData.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\include\machwdEd.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\include\machwdEncrypt.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\include\machwdRegAccess.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\include\machwdReset.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\include\machwdRnd.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\include\machwdService.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\include\machwdSet.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\include\machwdSetTrx.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWI\include\machwiAssociateHandler.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWI\include\machwiBeaconHandler.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWI\include\machwiDataHandler.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWI\include\machwiDisassociateHandler.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWI\include\machwiHwdReqMemPool.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWI\include\machwiManager.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWI\include\machwiMem.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWI\include\machwiMemAccess.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWI\include\machwiOrphanHandler.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWI\include\machwiPanIdConflictHandler.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWI\include\machwiPanServer.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWI\include\machwiPollHandler.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWI\include\machwiPurgeHandler.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWI\include\machwiResetHandler.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWI\include\machwiRxEnableHandler.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWI\include\machwiScanHandler.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWI\include\machwiSetGetHandler.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWI\include\machwiStartHandler.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWI\include\machwiSwitchRxCtrl.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWI\include\machwiTransactionHandler.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWI\include\machwiTransactionHash.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\MAC_PHY\MAC_HWI\include\machwiTransactionQueue.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\nldeData.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\nlmeDirectJoin.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\nlmeEdScan.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\nlmeJoin.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\nlmeLeave.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\nlmeNetworkDiscovery.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\nlmeNetworkFormation.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\nlmeNwkStatus.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\nlmePermitJoining.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\nlmeReset.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\nlmeRouteDiscovery.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\nlmeSetGet.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\nlmeStartRouter.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\nlmeSync.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\nlmeSyncLoss.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\nwk.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\nwkAddressResolv.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\nwkAttributes.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\nwkCommon.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\nwkConfigServer.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\nwkGroup.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\nwkNeighbor.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\nwkProfiler.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\nwkRouteInfo.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\nwkRouteTable.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\nwkSecurity.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkAddress.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkAddressConflict.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkAddressMap.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkBTT.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkCommands.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkConcentrator.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkConfig.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkDataReq.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkDbg.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkDirectJoin.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkDiscovery.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkEDScan.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkFormation.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkFrame.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkIB.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkInCounterSet.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkJoinInd.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkJoinReq.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkKeys.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkLeave.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkLinkStatus.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkLoopback.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkManager.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkManyToOne.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkMem.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkNeighborTable.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkOrphan.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkPacket.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkPassiveAck.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkPermitJoining.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkReportCommand.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkReset.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkRouteCache.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkRouteDiscovery.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkRouteDiscoveryTable.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkRouteRecord.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkRouteReply.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkRouteRequest.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkRouting.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkRoutingTable.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkRx.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkRxSecurity.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkSilentJoin.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkSourceRouting.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkStartRouter.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkStateMachine.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkStatusInd.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkStatusReq.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkSync.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkSyncLoss.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkSystem.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkTaskManager.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkTx.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkTxDelay.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkTxSecurity.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\NWK\include\private\nwkUpdateCommand.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\PersistDataServer\include\pdsDataServer.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\PersistDataServer\include\pdsMemIds.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\PersistDataServer\src\fakePds.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\PersistDataServer\std\include\stdPdsCrcService.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\PersistDataServer\std\include\stdPdsDbg.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\PersistDataServer\std\include\stdPdsFiles.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\PersistDataServer\std\include\stdPdsMem.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\PersistDataServer\std\include\stdPdsMemAbstract.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\PersistDataServer\std\include\stdPdsMemAccess.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\PersistDataServer\std\include\stdPdsMemIds.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\PersistDataServer\std\include\stdPdsTimer.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\PersistDataServer\std\include\stdPdsWriteData.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\PersistDataServer\std\src\stdPdsCrcService.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\PersistDataServer\std\src\stdPdsDataServer.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\PersistDataServer\std\src\stdPdsEvents.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\PersistDataServer\std\src\stdPdsInit.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\PersistDataServer\std\src\stdPdsMem.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\PersistDataServer\std\src\stdPdsMemAccess.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\PersistDataServer\std\src\stdPdsTimer.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\PersistDataServer\std\src\stdPdsWriteData.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\PersistDataServer\wl\include\wlPdsBindings.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\PersistDataServer\wl\include\wlPdsMemIds.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\PersistDataServer\wl\include\wlPdsSecurity.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\PersistDataServer\wl\include\wlPdsTaskManager.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\PersistDataServer\wl\include\wlPdsTypes.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\PersistDataServer\wl\include\wlPdsTypesConverter.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\PersistDataServer\wl\src\wlPdsDataServer.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\PersistDataServer\wl\src\wlPdsInit.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\PersistDataServer\wl\src\wlPdsSecurity.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\PersistDataServer\wl\src\wlPdsTaskManager.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\PersistDataServer\wl\src\wlPdsTypesConverter.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\SystemEnvironment\include\dbg.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\SystemEnvironment\include\sysDbg.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\SystemEnvironment\include\sysDuplicateTable.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\SystemEnvironment\include\sysEndian.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\SystemEnvironment\include\sysEvents.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\SystemEnvironment\include\sysEventsHandler.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\SystemEnvironment\include\sysIdleHandler.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\SystemEnvironment\include\sysIncrementMacro.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\SystemEnvironment\include\sysInit.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\SystemEnvironment\include\sysMutex.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\SystemEnvironment\include\sysQueue.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\SystemEnvironment\include\sysRepeatMacro.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\SystemEnvironment\include\sysSleep.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\SystemEnvironment\include\sysStat.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\SystemEnvironment\include\sysTaskManager.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\SystemEnvironment\include\sysTimer.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\SystemEnvironment\include\sysTypes.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\SystemEnvironment\include\sysUtils.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\SystemEnvironment\src\dbg.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\SystemEnvironment\src\sysDuplicateTable.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\SystemEnvironment\src\sysEventsHandler.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\SystemEnvironment\src\sysIdleHandler.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\SystemEnvironment\src\sysInit.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\SystemEnvironment\src\sysMutex.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\SystemEnvironment\src\sysQueue.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\SystemEnvironment\src\sysSleep.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\SystemEnvironment\src\sysStat.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\SystemEnvironment\src\sysTaskManager.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\SystemEnvironment\src\sysTimer.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\SystemEnvironment\src\sysUtils.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\include\clusters.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\include\eccAux.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\include\genericEcc.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\include\private\zclDbg.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\include\zcl.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\include\zclAttributes.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\include\zclBACnetProtocolTunnelCluster.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\include\zclBasicCluster.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\include\zclCommandAnalyzer.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\include\zclDemandResponseCluster.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\include\zclGenericTunnelCluster.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\include\zclGroupsCluster.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\include\zclHumidityMeasurementCluster.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\include\zclIdentifyCluster.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\include\zclInt.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\include\zclKeyEstablishmentCluster.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\include\zclLevelControlCluster.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\include\zclLinkInfoCluster.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\include\zclMem.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\include\zclMemoryManager.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\include\zclMessagingCluster.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\include\zclOccupancySensingCluster.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\include\zclOnOffCluster.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\include\zclOnOffSwitchConfigurationCluster.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\include\zclOTAUCluster.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\include\zclOtauDiscovery.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\include\zclOtauManager.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\include\zclParser.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\include\zclPowerConfigurationCluster.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\include\zclPriceCluster.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\include\zclScenesCluster.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\include\zclSecurityManager.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\include\zclSimpleMeteringCluster.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\include\zclSimpleMeteringClusterMacroSet.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\include\zclSmartEnergyTunnelCluster.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\include\zclTaskManager.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\include\zclTemperatureMeasurementCluster.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\include\zclThermostatCluster.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\include\zclTimeCluster.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\include\zclZllBasicCluster.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\include\zclZllColorControlCluster.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\include\zclZllCommissioningCluster.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\include\zclZllGroupsCluster.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\include\zclZllIdentifyCluster.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\include\zclZllLevelControlCluster.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\include\zclZllOnOffCluster.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\include\zclZllScenesCluster.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\src\zcl.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\src\zclAttributes.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\src\zclCommandAnalyzer.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\src\zclKeyEstablishmentCluster.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\src\zclMemoryManager.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\src\zclOtauClient.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\src\zclOtauDiscovery.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\src\zclOtauManager.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\src\zclOtauServer.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\src\zclParser.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\src\zclSecurityManager.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZCL\src\zclTaskManager.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZDO\include\appFramework.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZDO\include\private\zdoAddrResolvingInt.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZDO\include\private\zdoBinding.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZDO\include\private\zdoCommands.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZDO\include\private\zdoConfig.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZDO\include\private\zdoDbg.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZDO\include\private\zdoEndDeviceBinding.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZDO\include\private\zdoInit.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZDO\include\private\zdoLeaveNetwork.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZDO\include\private\zdoMem.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZDO\include\private\zdoMgmtNwkUpdate.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZDO\include\private\zdoNodeManager.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZDO\include\private\zdoNwkManager.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZDO\include\private\zdoPermissionsTable.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZDO\include\private\zdoPowerManager.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZDO\include\private\zdoServiceDiscovery.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZDO\include\private\zdoStartNetwork.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZDO\include\private\zdoStateMachine.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZDO\include\private\zdoTaskManager.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZDO\include\private\zdoZdpReq.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZDO\include\private\zdoZib.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZDO\include\zdo.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZDO\include\zdoAddrResolving.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZDO\include\zdoCommon.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZDO\include\zdoConfigServer.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZDO\include\zdoNotify.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZDO\include\zdoPermissions.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZDO\include\zdoSecurityManager.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZLLPlatform\ZLL\D_Nv\include\D_Nv.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZLLPlatform\ZLL\D_Nv\include\D_Nv_Bindings.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZLLPlatform\ZLL\D_Nv\include\D_Nv_Init.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZLLPlatform\ZLL\D_Nv\src\D_Nv.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZLLPlatform\ZLL\S_Nv\include\S_Nv.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZLLPlatform\ZLL\S_Nv\include\S_NvInternal.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZLLPlatform\ZLL\S_Nv\include\S_Nv_Bindings.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZLLPlatform\ZLL\S_Nv\include\S_Nv_Init.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZLLPlatform\ZLL\S_Nv\include\S_Nv_Platform_Ids.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZLLPlatform\ZLL\S_Nv\src\S_Nv.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lib\BitCloud-Components\ZLLPlatform\ZLL\S_Nv\src\S_Nv_Stub.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="otauService.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="uartManager.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="zclDevice.c">
+      <SubType>compile</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="common\" />
+    <Folder Include="common\clusters\" />
+    <Folder Include="common\clusters\include\" />
+    <Folder Include="common\clusters\src" />
+    <Folder Include="common\include\" />
+    <Folder Include="features\" />
+    <Folder Include="features\occupancySensor\" />
+    <Folder Include="features\occupancySensor\include\" />
+    <Folder Include="features\occupancySensor\src" />
+    <Folder Include="lib\" />
+    <Folder Include="lib\BitCloud-Components\" />
+    <Folder Include="lib\BitCloud-Components\APS\" />
+    <Folder Include="lib\BitCloud-Components\BSP\MEGARF\" />
+    <Folder Include="lib\BitCloud-Components\BSP\MEGARF\include" />
+    <Folder Include="lib\BitCloud-Components\BSP\MEGARF\src\" />
+    <Folder Include="lib\BitCloud-Components\ConfigServer\" />
+    <Folder Include="lib\BitCloud-Components\ConfigServer\src\" />
+    <Folder Include="lib\BitCloud-Components\HAL\" />
+    <Folder Include="lib\BitCloud-Components\HAL\avr\" />
+    <Folder Include="lib\BitCloud-Components\HAL\avr\atmega128rfa1\" />
+    <Folder Include="lib\BitCloud-Components\HAL\avr\atmega128rfa1\common\" />
+    <Folder Include="lib\BitCloud-Components\HAL\drivers\" />
+    <Folder Include="lib\BitCloud-Components\HAL\drivers\ISD\" />
+    <Folder Include="lib\BitCloud-Components\HAL\drivers\ISD\src\" />
+    <Folder Include="lib\BitCloud-Components\HAL\drivers\OFD\" />
+    <Folder Include="lib\BitCloud-Components\HAL\drivers\OFD\src\" />
+    <Folder Include="lib\BitCloud-Components\HAL\drivers\USBFIFO\" />
+    <Folder Include="lib\BitCloud-Components\HAL\drivers\USBFIFO\src\" />
+    <Folder Include="lib\BitCloud-Components\MAC_PHY\" />
+    <Folder Include="lib\BitCloud-Components\MAC_PHY\MAC_ENV\" />
+    <Folder Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\" />
+    <Folder Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\ATMEGA128RFA1\" />
+    <Folder Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\ATMEGA128RFA1\MAC_HWD\" />
+    <Folder Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\ATMEGA128RFA1\PHY\" />
+    <Folder Include="lib\BitCloud-Components\MAC_PHY\MAC_HWI\" />
+    <Folder Include="lib\BitCloud-Components\NWK\" />
+    <Folder Include="lib\BitCloud-Components\PersistDataServer\" />
+    <Folder Include="lib\BitCloud-Components\PersistDataServer\src\" />
+    <Folder Include="lib\BitCloud-Components\PersistDataServer\std\" />
+    <Folder Include="lib\BitCloud-Components\PersistDataServer\std\src\" />
+    <Folder Include="lib\BitCloud-Components\PersistDataServer\wl\" />
+    <Folder Include="lib\BitCloud-Components\PersistDataServer\wl\src\" />
+    <Folder Include="lib\BitCloud-Components\Security\" />
+    <Folder Include="lib\BitCloud-Components\Security\ServiceProvider\" />
+    <Folder Include="lib\BitCloud-Components\Security\TrustCentre\" />
+    <Folder Include="lib\BitCloud-Components\SystemEnvironment\" />
+    <Folder Include="lib\BitCloud-Components\SystemEnvironment\include" />
+    <Folder Include="lib\BitCloud-Components\HAL\include" />
+    <Folder Include="lib\BitCloud-Components\BSP" />
+    <Folder Include="lib\BitCloud-Components\BSP\include" />
+    <Folder Include="lib\BitCloud-Components\NWK\include" />
+    <Folder Include="lib\BitCloud-Components\NWK\include\private" />
+    <Folder Include="lib\BitCloud-Components\SystemEnvironment\src\" />
+    <Folder Include="lib\BitCloud-Components\ZCL\" />
+    <Folder Include="lib\BitCloud-Components\ZCL\src\" />
+    <Folder Include="lib\BitCloud-Components\ZDO\" />
+    <Folder Include="lib\BitCloud-Components\ZDO\include" />
+    <Folder Include="lib\BitCloud-Components\ZDO\include\private" />
+    <Folder Include="lib\BitCloud-Components\APS\include" />
+    <Folder Include="lib\BitCloud-Components\APS\include\private" />
+    <Folder Include="lib\BitCloud-Components\SystemEnvironment\include" />
+    <Folder Include="lib\BitCloud-Components\ConfigServer\include" />
+    <Folder Include="lib\BitCloud-Components\ConfigServer\include\private" />
+    <Folder Include="lib\BitCloud-Components\PersistDataServer\include" />
+    <Folder Include="lib\BitCloud-Components\PersistDataServer\std\include" />
+    <Folder Include="lib\BitCloud-Components\PersistDataServer\wl\include" />
+    <Folder Include="lib\BitCloud-Components\ZLLPlatform\" />
+    <Folder Include="lib\BitCloud-Components\ZLLPlatform\Infrastructure\" />
+    <Folder Include="lib\BitCloud-Components\ZLLPlatform\Infrastructure\N_ErrH\" />
+    <Folder Include="lib\BitCloud-Components\ZLLPlatform\Infrastructure\N_Init\" />
+    <Folder Include="lib\BitCloud-Components\ZLLPlatform\Infrastructure\N_Log\" />
+    <Folder Include="lib\BitCloud-Components\ZLLPlatform\Infrastructure\N_Memory\" />
+    <Folder Include="lib\BitCloud-Components\ZLLPlatform\Infrastructure\N_Task\" />
+    <Folder Include="lib\BitCloud-Components\ZLLPlatform\Infrastructure\N_Timer\" />
+    <Folder Include="lib\BitCloud-Components\ZLLPlatform\Infrastructure\N_Types\" />
+    <Folder Include="lib\BitCloud-Components\ZLLPlatform\Infrastructure\N_Types\include" />
+    <Folder Include="lib\BitCloud-Components\ZLLPlatform\Infrastructure\N_Util\" />
+    <Folder Include="lib\BitCloud-Components\ZLLPlatform\Infrastructure\N_Util\include" />
+    <Folder Include="lib\BitCloud-Components\ZLLPlatform\Infrastructure\N_Timer\include" />
+    <Folder Include="lib\BitCloud-Components\ZLLPlatform\Infrastructure\N_Task\include" />
+    <Folder Include="lib\BitCloud-Components\ZLLPlatform\Infrastructure\N_ErrH\include" />
+    <Folder Include="lib\BitCloud-Components\ZLLPlatform\Infrastructure\N_Log\include" />
+    <Folder Include="lib\BitCloud-Components\ZLLPlatform\Infrastructure\N_Memory\include" />
+    <Folder Include="lib\BitCloud-Components\ZLLPlatform\Infrastructure\N_Init\include" />
+    <Folder Include="lib\BitCloud-Components\ZLLPlatform\ZLL\" />
+    <Folder Include="lib\BitCloud-Components\ZLLPlatform\ZLL\D_Nv\" />
+    <Folder Include="lib\BitCloud-Components\ZLLPlatform\ZLL\D_Nv\src\" />
+    <Folder Include="lib\BitCloud-Components\ZLLPlatform\ZLL\S_Nv\" />
+    <Folder Include="lib\BitCloud-Components\ZLLPlatform\ZLL\S_Nv\include" />
+    <Folder Include="lib\BitCloud-Components\ZLLPlatform\ZLL\D_Nv\include" />
+    <Folder Include="lib\BitCloud-Components\Security\TrustCentre\include" />
+    <Folder Include="lib\BitCloud-Components\Security\ServiceProvider\include" />
+    <Folder Include="lib\BitCloud-Components\HAL\drivers\include" />
+    <Folder Include="lib\BitCloud-Components\HAL\drivers\USBFIFO\include" />
+    <Folder Include="lib\BitCloud-Components\HAL\avr\atmega128rfa1\common\include" />
+    <Folder Include="lib\BitCloud-Components\ZCL\include\private" />
+    <Folder Include="lib\BitCloud-Components\ZCL\include" />
+    <Folder Include="lib\BitCloud-Components\HAL\drivers\include" />
+    <Folder Include="lib\BitCloud-Components\HAL\drivers\OFD\include" />
+    <Folder Include="lib\BitCloud-Components\HAL\drivers\ISD\include" />
+    <Folder Include="lib\BitCloud-Components\HAL\drivers\include" />
+    <Folder Include="lib\BitCloud-Components\HAL\drivers\OFD\include" />
+    <Folder Include="lib\BitCloud-Components\HAL\drivers\ISD\include" />
+    <Folder Include="lib\BitCloud-Components\MAC_PHY\include" />
+    <Folder Include="lib\BitCloud-Components\MAC_PHY\MAC_ENV\include" />
+    <Folder Include="lib\BitCloud-Components\MAC_PHY\MAC_HWI\include" />
+    <Folder Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\include" />
+    <Folder Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\ATMEGA128RFA1\PHY\include" />
+    <Folder Include="lib\BitCloud-Components\MAC_PHY\MAC_HWD_PHY\ATMEGA128RFA1\MAC_HWD\include" />
+    <Folder Include="lib\BitCloud-Components\ZLLPlatform\ZLL\S_Nv\src\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="lib\BitCloud-Components\HAL\avr\atmega128rfa1\common\include\macros.m90">
+      <SubType>compile</SubType>
+    </None>
+  </ItemGroup>
+  <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
+</Project>
