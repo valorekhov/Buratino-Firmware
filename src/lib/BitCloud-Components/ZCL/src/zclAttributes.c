@@ -917,7 +917,8 @@ bool isReportingPermitted(const ZclAttribute_t *pAttr)
     + sizeof(uint8_t) + attrLength + sizeof(ZCL_ReportTime_t) + sizeof(ZCL_ReportTime_t); // properties + value + reportCounter + minReportInterval
   ZCL_ReportTime_t maxReportTime = *(ZCL_ReportTime_t *)maxReportTimePtr;
 
-  return (0xFFFF == maxReportTime ? false : (pAttr->properties & ZCL_REPORTING_CONFIGURED));
+  //return (0xFFFF == maxReportTime ? false : (pAttr->properties & ZCL_REPORTING_CONFIGURED));
+  return (pAttr->properties & ZCL_REPORTING_CONFIGURED);
 }
 
 /*************************************************************************//**

@@ -33,6 +33,7 @@
 #include <pdsDataServer.h>
 #include <haClusters.h>
 #include <otauService.h>
+#include <bspLeds.h>
 
 /******************************************************************************
                              Defines section
@@ -198,8 +199,8 @@ bool appIsInitiator(void)
 ******************************************************************************/
 void appEzModeDone(void)
 {
-  sendConfigureReportingToNotify(APP_ENDPOINT_COMBINED_INTERFACE, OCCUPANCY_SENSING_CLUSTER_ID,
-    ZCL_OCCUPANCY_SENSING_CLUSTER_OCCUPANCY_SERVER_ATTRIBUTE_ID, OCCUPANCY_SENSING_VAL_MAX_REPORT_PERIOD * 2);
+  //sendConfigureReportingToNotify(APP_ENDPOINT_COMBINED_INTERFACE, OCCUPANCY_SENSING_CLUSTER_ID,
+  //ZCL_OCCUPANCY_SENSING_CLUSTER_OCCUPANCY_SERVER_ATTRIBUTE_ID, OCCUPANCY_SENSING_VAL_MAX_REPORT_PERIOD * 2);
   ZCL_StartReporting();
 }
 
@@ -211,7 +212,9 @@ void appEzModeDone(void)
 ******************************************************************************/
 void ZDO_BindIndication(ZDO_BindInd_t *bindInd)
 {
-  (void)bindInd;
+//  (void)bindInd;
+	halOnThirdLed();
+	
 }
 
 /**************************************************************************//**
