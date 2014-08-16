@@ -197,6 +197,9 @@ static void initApp(void)
   DeviceType_t deviceType;
 
   CS_WriteParameter(CS_PERMIT_DURATION_ID, &(uint8_t){0});
+  
+  channelMask = (1L<<0x0b) | (1L<<0x0f) |  (1L<<0x0c) | (1L<<0x0d) | /*(1L<<0x0e) |*/ (1L<<0x10) | (1L<<0x11) | (1L<<0x12) | (1L<<0x13) | (1L<<0x14) | (1L<<0x15) | (1L<<0x16) | (1L<<0x17) | (1L<<0x18) | (1L<<0x19) | (1L<<0x1A);  
+  CS_WriteParameter(CS_CHANNEL_MASK_ID, &channelMask);
   CS_ReadParameter(CS_CHANNEL_MASK_ID, &channelMask);
 
   appState = APP_START_WAIT_STATE;
@@ -240,13 +243,13 @@ static void ZDO_StartNetworkConf(ZDO_StartNetworkConf_t *confInfo)
   // Joined network successfully
   if (ZDO_SUCCESS_STATUS == confInfo->status)   // Network was started successfully
   {
-	halOnSecondLed();
+
     ExtPanId_t extPanId;
     /* Set the target extended PANID to be equal to the extended PANID of the joined PAN
      to ensure device won't join other networks. */
     CS_ReadParameter(CS_NWK_EXT_PANID_ID,&extPanId);
     CS_WriteParameter(CS_EXT_PANID_ID, &extPanId);
-
+	
     CS_WriteParameter(CS_CHANNEL_MASK_ID, &channelMask);
     if (appDeviceState != DEVICE_ACTIVE_IDLE_STATE)
       appDeviceState = DEVICE_INITIAL_STATE;        // Set device state
@@ -259,6 +262,8 @@ static void ZDO_StartNetworkConf(ZDO_StartNetworkConf_t *confInfo)
       invokeEzMode(appEzModeDone);
       startBindingAndFinding = false;
     }
+	
+	halOnSecondLed();
   }
   else
   {

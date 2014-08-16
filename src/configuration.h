@@ -229,7 +229,7 @@
 
 #define APP_DIMMER_SWITCH_EXT_ADDRESS 0x3LL
 
-#define APP_OCCUPANCY_SENSOR_EXT_ADDRESS 0x4LL
+#define APP_OCCUPANCY_SENSOR_EXT_ADDRESS 0x0004251918010c20LL
 
 // Specifies if logging enabled
 //#define APP_DEVICE_EVENTS_LOGGING 1
@@ -337,7 +337,9 @@
 // 
 //  C-type: uint32_t
 //  Can be set: at any time before network start
-#define CS_CHANNEL_MASK (1L<<0x0f) | (1L<<0x0b) | (1L<<0x0c) | (1L<<0x0d) | (1L<<0x0e) | (1L<<0x10) | (1L<<0x11) | (1L<<0x12) | (1L<<0x13) | (1L<<0x14) | (1L<<0x15) | (1L<<0x16) | (1L<<0x17) | (1L<<0x18) | (1L<<0x19) | (1L<<0x1A)
+#define CS_CHANNEL_MASK (1L<<0x0b) | (1L<<0x0f) |  (1L<<0x0c) | (1L<<0x0d) | (1L<<0x10) | (1L<<0x11) | (1L<<0x12) | (1L<<0x13) | (1L<<0x14) | (1L<<0x15) | (1L<<0x16) | (1L<<0x17) | (1L<<0x18) | (1L<<0x19) | (1L<<0x1A)
+//| (1L<<0x0e) 
+//#define CS_CHANNEL_MASK 0x7FFF800LL
 
 // The parameter specifies the predefined extended PANID of the network to be
 // formed (for the coordinator) or joined (for a router or an end device). For a
@@ -374,7 +376,7 @@
 // key or a master key depending on the CS_SECURITY_STATUS used for each node it is
 // going to authenticate. Entries can also be added manually by APS_SetLinkKey()
 // and APS_SetMasterKey().
-#define CS_APS_KEY_PAIR_DESCRIPTORS_AMOUNT 5
+#define CS_APS_KEY_PAIR_DESCRIPTORS_AMOUNT 10
 
 // The parameter is used to determine the security type.
 // 

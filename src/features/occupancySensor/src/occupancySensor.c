@@ -140,7 +140,7 @@ void appSecurityInit(void)
 
   zclSet.attr.id = ZCL_LINK_KEY_DESC_ID;
   zclSet.attr.value.linkKeyDesc = &keyDesc;
-  ZCL_Set(&zclSet);
+  ZCL_Set(&zclSet);  
 }
 
 /**************************************************************************//**
@@ -188,7 +188,7 @@ void appStop(void)
 ******************************************************************************/
 bool appIsInitiator(void)
 {
-  return true;
+  return false;
 }
 
 /**************************************************************************//**

@@ -68,7 +68,7 @@
 #endif
 
 #define CS_UID                              APP_EXT_ADDRESS
-#define CS_APS_TRUST_CENTER_ADDRESS         TC_EXT_ADDRESS
+#define CS_APS_TRUST_CENTER_ADDRESS         APS_UNIVERSAL_EXTENDED_ADDRESS  //0x0000000000000000ULL //TC_EXT_ADDRESS
 
 #ifndef APP_NETWORK_KEY
   #define APP_NETWORK_KEY {0xcc,0xcc,0xcc,0xcc,0xcc,0xcc,0xcc,0xcc,0xcc,0xcc,0xcc,0xcc,0xcc,0xcc,0xcc,0xcc}
