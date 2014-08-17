@@ -217,6 +217,7 @@ static void initApp(void)
 
   initEzModeManager(appIsInitiator());
 #ifndef ZAPPSI_HOST
+
   PDS_StoreByEvents(BC_ALL_MEMORY_MEM_ID);
   if (PDS_IsAbleToRestore(BC_ALL_MEMORY_MEM_ID) && PDS_Restore(BC_ALL_MEMORY_MEM_ID))
   {
@@ -226,7 +227,14 @@ static void initApp(void)
     restored = true;
     appDeviceInitAfterPowerFailure();
     return;
-  }
+  } 
+  /*
+  extPanId: 16303394421632598365
+  panId: 1577
+  shortAddr: 53700
+  parentAddr: 0
+  channel: 15
+  */
 #endif
   appSecurityInit();
   appDeviceInit();
@@ -261,8 +269,9 @@ static void ZDO_StartNetworkConf(ZDO_StartNetworkConf_t *confInfo)
     {
       invokeEzMode(appEzModeDone);
       startBindingAndFinding = false;
-    }
-	
+    }// else if (restored){
+		//appEzModeDone();
+	//}	
 	halOnSecondLed();
   }
   else

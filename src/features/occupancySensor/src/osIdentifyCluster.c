@@ -28,6 +28,7 @@
 #include <pdsDataServer.h>
 #include <zclDevice.h>
 #include <ezModeManager.h>
+#include <bspLeds.h>
 
 /******************************************************************************
                     Definition(s) section
@@ -96,6 +97,7 @@ void identifyClusterStop(void)
 void idetifyStartIdentifying(uint16_t time)
 {
   (void)time;
+  //halOnThirdLed();
 }
 
 /**************************************************************************//**

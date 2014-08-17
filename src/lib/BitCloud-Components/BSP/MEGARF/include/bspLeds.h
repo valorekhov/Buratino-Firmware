@@ -69,19 +69,19 @@
   #define halReadFirstLed()       GPIO_D6_read()
   #define halToggleFirstLed()     GPIO_D6_toggle()
 
-  #define halInitSecondLed()       GPIO_G2_make_out()
-  #define halUnInitSecondLed()     GPIO_G2_make_in()
-  #define halOnSecondLed()         GPIO_G2_clr()
-  #define halOffSecondLed()        GPIO_G2_set()
-  #define halReadSecondLed()       GPIO_G2_read()
-  #define halToggleSecondLed()     GPIO_G2_toggle()
+  #define halInitSecondLed()       GPIO_E2_make_out()
+  #define halUnInitSecondLed()     GPIO_E2_make_in()
+  #define halOnSecondLed()         GPIO_E2_clr()
+  #define halOffSecondLed()        GPIO_E2_set()
+  #define halReadSecondLed()       GPIO_E2_read()
+  #define halToggleSecondLed()     GPIO_E2_toggle()
 
-  #define halInitThirdLed()       GPIO_E2_make_out()
-  #define halUnInitThirdLed()     GPIO_E2_make_in()
-  #define halOnThirdLed()         GPIO_E2_clr()
-  #define halOffThirdLed()        GPIO_E2_set()
-  #define halReadThirdLed()       GPIO_E2_read()
-  #define halToggleThirdLed()     GPIO_E2_toggle()
+  #define halInitThirdLed()       GPIO_G2_make_out()
+  #define halUnInitThirdLed()     GPIO_G2_make_in()
+  #define halOnThirdLed()         GPIO_G2_clr()
+  #define halOffThirdLed()        GPIO_G2_set()
+  #define halReadThirdLed()       GPIO_G2_read()
+  #define halToggleThirdLed()     GPIO_G2_toggle()
 
 #endif // BSP_SUPPORT
 #endif /*_BSPLEDS_H*/

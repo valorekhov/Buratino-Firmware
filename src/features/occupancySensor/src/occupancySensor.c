@@ -127,6 +127,7 @@ void appDeviceInitAfterPowerFailure(void)
   if (PDS_IsAbleToRestore(APP_OS_OCCUPANCY_MEM_ID))
     PDS_Restore(APP_OS_OCCUPANCY_MEM_ID);
 
+  // appEzModeDone();
   ZCL_StartReporting();
 }
 
@@ -199,8 +200,8 @@ bool appIsInitiator(void)
 ******************************************************************************/
 void appEzModeDone(void)
 {
-  //sendConfigureReportingToNotify(APP_ENDPOINT_COMBINED_INTERFACE, OCCUPANCY_SENSING_CLUSTER_ID,
-  //ZCL_OCCUPANCY_SENSING_CLUSTER_OCCUPANCY_SERVER_ATTRIBUTE_ID, OCCUPANCY_SENSING_VAL_MAX_REPORT_PERIOD * 2);
+  sendConfigureReportingToNotify(APP_ENDPOINT_COMBINED_INTERFACE, OCCUPANCY_SENSING_CLUSTER_ID,
+	ZCL_OCCUPANCY_SENSING_CLUSTER_OCCUPANCY_SERVER_ATTRIBUTE_ID, OCCUPANCY_SENSING_VAL_MAX_REPORT_PERIOD * 2);
   ZCL_StartReporting();
 }
 
@@ -212,9 +213,8 @@ void appEzModeDone(void)
 ******************************************************************************/
 void ZDO_BindIndication(ZDO_BindInd_t *bindInd)
 {
-//  (void)bindInd;
-	halOnThirdLed();
-	
+  (void)bindInd;
+  halOnThirdLed();	
 }
 
 /**************************************************************************//**
