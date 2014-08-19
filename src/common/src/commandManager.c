@@ -2,7 +2,7 @@
 /******************************************************************************
                     Includes section
 ******************************************************************************/
-#include "configuration.h"
+
 #include <sysUtils.h>
 #include <commandManager.h>
 #include <zclIdentifyCluster.h>

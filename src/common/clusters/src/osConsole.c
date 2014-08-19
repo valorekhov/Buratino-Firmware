@@ -15,7 +15,7 @@
     History:
     19.12.2012 N.Fomin - Created
 ******************************************************************************/
-#ifdef APP_DEVICE_TYPE_OCCUPANCY_SENSOR
+//#ifdef APP_DEVICE_TYPE_OCCUPANCY_SENSOR
 #if APP_ENABLE_CONSOLE == 1
 
 /******************************************************************************
@@ -192,6 +192,6 @@ static void processRestartNwkCmd(const ScanValue_t *args)
 }
 
 #endif // APP_ENABLE_CONSOLE == 1
-#endif // APP_DEVICE_TYPE_OCCUPANCY_SENSOR
+//#endif // APP_DEVICE_TYPE_OCCUPANCY_SENSOR
 
 // eof osConsole.c

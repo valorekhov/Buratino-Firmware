@@ -15,7 +15,7 @@
     History:
     12.12.12 N. Fomin - Created.
 ******************************************************************************/
-#ifdef APP_DEVICE_TYPE_OCCUPANCY_SENSOR
+//#ifdef APP_DEVICE_TYPE_OCCUPANCY_SENSOR
 
 /******************************************************************************
                     Includes section
@@ -355,7 +355,7 @@ static void identifyTimerFired(void)
   }
 }
 
-#endif // APP_DEVICE_TYPE_OCCUPANCY_SENSOR
+//#endif // APP_DEVICE_TYPE_OCCUPANCY_SENSOR
 
 // eof osIdentifyCluster.c
 

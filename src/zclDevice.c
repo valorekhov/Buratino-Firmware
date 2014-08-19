@@ -13,6 +13,7 @@
 #include <sysTaskManager.h>
 #include <bspUid.h>
 #include <bspLeds.h>
+#include <buratinoSettings.h>
 
 #ifdef ZAPPSI_HOST
 #include <zsiNotify.h>

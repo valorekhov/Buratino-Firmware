@@ -91,83 +91,84 @@
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <ToolchainSettings>
       <AvrGcc>
-        <avrgcc.common.optimization.RelaxBranches>True</avrgcc.common.optimization.RelaxBranches>
-        <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
-        <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
-        <avrgcc.common.outputfiles.eep>True</avrgcc.common.outputfiles.eep>
-        <avrgcc.common.outputfiles.srec>True</avrgcc.common.outputfiles.srec>
-        <avrgcc.common.outputfiles.usersignatures>False</avrgcc.common.outputfiles.usersignatures>
-        <avrgcc.compiler.symbols.DefSymbols>
-          <ListValues>
-            <Value>DEBUG</Value>
-          </ListValues>
-        </avrgcc.compiler.symbols.DefSymbols>
-        <avrgcc.compiler.directories.IncludePaths>
-          <ListValues>
-            <Value>../features/occupancySensor/include</Value>
-            <Value>../common/include</Value>
-            <Value>../common/clusters/include</Value>
-            <Value>../lib/BitCloud-Components/BSP/MEGARF/include</Value>
-            <Value>../lib/BitCloud-Components/SystemEnvironment/include</Value>
-            <Value>../lib/BitCloud-Components/HAL/include</Value>
-            <Value>../lib/BitCloud-Components/BSP</Value>
-            <Value>../lib/BitCloud-Components/BSP/include</Value>
-            <Value>../lib/BitCloud-Components/NWK/include</Value>
-            <Value>../lib/BitCloud-Components/NWK/include/private</Value>
-            <Value>../lib/BitCloud-Components/ZDO/include</Value>
-            <Value>../lib/BitCloud-Components/ZDO/include/private</Value>
-            <Value>../lib/BitCloud-Components/APS/include</Value>
-            <Value>../lib/BitCloud-Components/APS/include/private</Value>
-            <Value>../lib/BitCloud-Components/SystemEnvironment/include</Value>
-            <Value>../lib/BitCloud-Components/ConfigServer/include</Value>
-            <Value>../lib/BitCloud-Components/ConfigServer/include/private</Value>
-            <Value>../lib/BitCloud-Components/PersistDataServer/include</Value>
-            <Value>../lib/BitCloud-Components/PersistDataServer/std/include</Value>
-            <Value>../lib/BitCloud-Components/PersistDataServer/wl/include</Value>
-            <Value>../lib/BitCloud-Components/ZLLPlatform/Infrastructure/N_Types/include</Value>
-            <Value>../lib/BitCloud-Components/ZLLPlatform/Infrastructure/N_Util/include</Value>
-            <Value>../lib/BitCloud-Components/ZLLPlatform/Infrastructure/N_Timer/include</Value>
-            <Value>../lib/BitCloud-Components/ZLLPlatform/Infrastructure/N_Task/include</Value>
-            <Value>../lib/BitCloud-Components/ZLLPlatform/Infrastructure/N_ErrH/include</Value>
-            <Value>../lib/BitCloud-Components/ZLLPlatform/Infrastructure/N_Log/include</Value>
-            <Value>../lib/BitCloud-Components/ZLLPlatform/Infrastructure/N_Memory/include</Value>
-            <Value>../lib/BitCloud-Components/ZLLPlatform/Infrastructure/N_Init/include</Value>
-            <Value>../lib/BitCloud-Components/ZLLPlatform/ZLL/S_Nv/include</Value>
-            <Value>../lib/BitCloud-Components/ZLLPlatform/ZLL/D_Nv/include</Value>
-            <Value>../lib/BitCloud-Components/Security/TrustCentre/include</Value>
-            <Value>../lib/BitCloud-Components/Security/ServiceProvider/include</Value>
-            <Value>../lib/BitCloud-Components/HAL/drivers/include</Value>
-            <Value>../lib/BitCloud-Components/HAL/drivers/USBFIFO/include</Value>
-            <Value>../lib/BitCloud-Components/HAL/avr/atmega128rfa1/common/include</Value>
-            <Value>../lib/BitCloud-Components/ZCL/include/private</Value>
-            <Value>../lib/BitCloud-Components/ZCL/include</Value>
-            <Value>../lib/BitCloud-Components/HAL/drivers/include</Value>
-            <Value>../lib/BitCloud-Components/HAL/drivers/OFD/include</Value>
-            <Value>../lib/BitCloud-Components/HAL/drivers/ISD/include</Value>
-            <Value>../lib/BitCloud-Components/HAL/drivers/include</Value>
-            <Value>../lib/BitCloud-Components/HAL/drivers/OFD/include</Value>
-            <Value>../lib/BitCloud-Components/HAL/drivers/ISD/include</Value>
-            <Value>../lib/BitCloud-Components/MAC_PHY/include</Value>
-            <Value>../lib/BitCloud-Components/MAC_PHY/MAC_ENV/include</Value>
-            <Value>../lib/BitCloud-Components/MAC_PHY/MAC_HWI/include</Value>
-            <Value>../lib/BitCloud-Components/MAC_PHY/MAC_HWD_PHY/include</Value>
-            <Value>../lib/BitCloud-Components/MAC_PHY/MAC_HWD_PHY/ATMEGA128RFA1/PHY/include</Value>
-            <Value>../lib/BitCloud-Components/MAC_PHY/MAC_HWD_PHY/ATMEGA128RFA1/MAC_HWD/include</Value>
-          </ListValues>
-        </avrgcc.compiler.directories.IncludePaths>
-        <avrgcc.compiler.optimization.level>Optimize for size (-Os)</avrgcc.compiler.optimization.level>
-        <avrgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>False</avrgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>
-        <avrgcc.compiler.optimization.PrepareDataForGarbageCollection>False</avrgcc.compiler.optimization.PrepareDataForGarbageCollection>
-        <avrgcc.compiler.optimization.DebugLevel>Default (-g2)</avrgcc.compiler.optimization.DebugLevel>
-        <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
-        <avrgcc.compiler.miscellaneous.OtherFlags>-std=gnu99 -pipe -c -W -Wall -Wno-int-to-pointer-cast -Wno-pointer-to-int-cast -ffunction-sections -mmcu=atmega256rfr2 -mcall-prologues -fshort-enums -mrelax -D_BINDING_ -D_RF_BAT_MON_  -D_SLEEP_WHEN_IDLE_ -DHAL_8MHz  -DBOARD_MEGARF  -DATMEGA256RFR2  -DSTACK_TYPE_ALL  -DSTDLINK_SECURITY_MODE -include "../configuration.h"</avrgcc.compiler.miscellaneous.OtherFlags>
-        <avrgcc.linker.miscellaneous.LinkerFlags>-Wl,--section-start=.data=0x800200 -Wl,--script=../build/atmega256rfr2.ld -Wl,-( ../lib/libBc_All_StdlinkSec_Atmega256rfr2_Atmega256rfr2_Gcc.a ../lib/libHAL_MegaRf_Atmega256rfr2_8Mhz_Gcc.a ../lib/WdtInitatmega256rfr2_Gcc.o -Wl,-)</avrgcc.linker.miscellaneous.LinkerFlags>
-        <avrgcc.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcc.assembler.debugging.DebugLevel>
-      </AvrGcc>
+  <avrgcc.common.optimization.RelaxBranches>True</avrgcc.common.optimization.RelaxBranches>
+  <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
+  <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
+  <avrgcc.common.outputfiles.eep>True</avrgcc.common.outputfiles.eep>
+  <avrgcc.common.outputfiles.srec>True</avrgcc.common.outputfiles.srec>
+  <avrgcc.common.outputfiles.usersignatures>False</avrgcc.common.outputfiles.usersignatures>
+  <avrgcc.compiler.symbols.DefSymbols>
+    <ListValues>
+      <Value>DEBUG</Value>
+    </ListValues>
+  </avrgcc.compiler.symbols.DefSymbols>
+  <avrgcc.compiler.directories.IncludePaths>
+    <ListValues>
+      <Value>..</Value>
+      <Value>../features/occupancySensor/include</Value>
+      <Value>../common/include</Value>
+      <Value>../common/clusters/include</Value>
+      <Value>../lib/BitCloud-Components/BSP/MEGARF/include</Value>
+      <Value>../lib/BitCloud-Components/SystemEnvironment/include</Value>
+      <Value>../lib/BitCloud-Components/HAL/include</Value>
+      <Value>../lib/BitCloud-Components/BSP</Value>
+      <Value>../lib/BitCloud-Components/BSP/include</Value>
+      <Value>../lib/BitCloud-Components/NWK/include</Value>
+      <Value>../lib/BitCloud-Components/NWK/include/private</Value>
+      <Value>../lib/BitCloud-Components/ZDO/include</Value>
+      <Value>../lib/BitCloud-Components/ZDO/include/private</Value>
+      <Value>../lib/BitCloud-Components/APS/include</Value>
+      <Value>../lib/BitCloud-Components/APS/include/private</Value>
+      <Value>../lib/BitCloud-Components/SystemEnvironment/include</Value>
+      <Value>../lib/BitCloud-Components/ConfigServer/include</Value>
+      <Value>../lib/BitCloud-Components/ConfigServer/include/private</Value>
+      <Value>../lib/BitCloud-Components/PersistDataServer/include</Value>
+      <Value>../lib/BitCloud-Components/PersistDataServer/std/include</Value>
+      <Value>../lib/BitCloud-Components/PersistDataServer/wl/include</Value>
+      <Value>../lib/BitCloud-Components/ZLLPlatform/Infrastructure/N_Types/include</Value>
+      <Value>../lib/BitCloud-Components/ZLLPlatform/Infrastructure/N_Util/include</Value>
+      <Value>../lib/BitCloud-Components/ZLLPlatform/Infrastructure/N_Timer/include</Value>
+      <Value>../lib/BitCloud-Components/ZLLPlatform/Infrastructure/N_Task/include</Value>
+      <Value>../lib/BitCloud-Components/ZLLPlatform/Infrastructure/N_ErrH/include</Value>
+      <Value>../lib/BitCloud-Components/ZLLPlatform/Infrastructure/N_Log/include</Value>
+      <Value>../lib/BitCloud-Components/ZLLPlatform/Infrastructure/N_Memory/include</Value>
+      <Value>../lib/BitCloud-Components/ZLLPlatform/Infrastructure/N_Init/include</Value>
+      <Value>../lib/BitCloud-Components/ZLLPlatform/ZLL/S_Nv/include</Value>
+      <Value>../lib/BitCloud-Components/ZLLPlatform/ZLL/D_Nv/include</Value>
+      <Value>../lib/BitCloud-Components/Security/TrustCentre/include</Value>
+      <Value>../lib/BitCloud-Components/Security/ServiceProvider/include</Value>
+      <Value>../lib/BitCloud-Components/HAL/drivers/include</Value>
+      <Value>../lib/BitCloud-Components/HAL/drivers/USBFIFO/include</Value>
+      <Value>../lib/BitCloud-Components/HAL/avr/atmega128rfa1/common/include</Value>
+      <Value>../lib/BitCloud-Components/ZCL/include/private</Value>
+      <Value>../lib/BitCloud-Components/ZCL/include</Value>
+      <Value>../lib/BitCloud-Components/HAL/drivers/include</Value>
+      <Value>../lib/BitCloud-Components/HAL/drivers/OFD/include</Value>
+      <Value>../lib/BitCloud-Components/HAL/drivers/ISD/include</Value>
+      <Value>../lib/BitCloud-Components/HAL/drivers/include</Value>
+      <Value>../lib/BitCloud-Components/HAL/drivers/OFD/include</Value>
+      <Value>../lib/BitCloud-Components/HAL/drivers/ISD/include</Value>
+      <Value>../lib/BitCloud-Components/MAC_PHY/include</Value>
+      <Value>../lib/BitCloud-Components/MAC_PHY/MAC_ENV/include</Value>
+      <Value>../lib/BitCloud-Components/MAC_PHY/MAC_HWI/include</Value>
+      <Value>../lib/BitCloud-Components/MAC_PHY/MAC_HWD_PHY/include</Value>
+      <Value>../lib/BitCloud-Components/MAC_PHY/MAC_HWD_PHY/ATMEGA128RFA1/PHY/include</Value>
+      <Value>../lib/BitCloud-Components/MAC_PHY/MAC_HWD_PHY/ATMEGA128RFA1/MAC_HWD/include</Value>
+    </ListValues>
+  </avrgcc.compiler.directories.IncludePaths>
+  <avrgcc.compiler.optimization.level>Optimize for size (-Os)</avrgcc.compiler.optimization.level>
+  <avrgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>False</avrgcc.compiler.optimization.PrepareFunctionsForGarbageCollection>
+  <avrgcc.compiler.optimization.PrepareDataForGarbageCollection>False</avrgcc.compiler.optimization.PrepareDataForGarbageCollection>
+  <avrgcc.compiler.optimization.DebugLevel>Default (-g2)</avrgcc.compiler.optimization.DebugLevel>
+  <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+  <avrgcc.compiler.miscellaneous.OtherFlags>-std=gnu99 -pipe -c -W -Wall -Wno-int-to-pointer-cast -Wno-pointer-to-int-cast -ffunction-sections -mmcu=atmega256rfr2 -mcall-prologues -fshort-enums -mrelax -D_BINDING_ -D_RF_BAT_MON_  -D_SLEEP_WHEN_IDLE_ -DHAL_8MHz  -DBOARD_MEGARF  -DATMEGA256RFR2  -DSTACK_TYPE_ALL  -DSTDLINK_SECURITY_MODE -include "../configuration.h"</avrgcc.compiler.miscellaneous.OtherFlags>
+  <avrgcc.linker.miscellaneous.LinkerFlags>-Wl,--section-start=.data=0x800200 -Wl,--script=../build/atmega256rfr2.ld -Wl,-( ../lib/libBc_All_StdlinkSec_Atmega256rfr2_Atmega256rfr2_Gcc.a ../lib/libHAL_MegaRf_Atmega256rfr2_8Mhz_Gcc.a ../lib/WdtInitatmega256rfr2_Gcc.o -Wl,-)</avrgcc.linker.miscellaneous.LinkerFlags>
+  <avrgcc.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcc.assembler.debugging.DebugLevel>
+</AvrGcc>
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="commandManager.c">
+    <Compile Include="buratinoSettings.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="common\clusters\include\basicCluster.h">
@@ -179,7 +180,28 @@
     <Compile Include="common\clusters\include\identifyCluster.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="common\clusters\include\osBasicCluster.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="common\clusters\include\osClusters.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="common\clusters\include\osIdentifyCluster.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="common\clusters\src\haClusters.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="common\clusters\src\osBasicCluster.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="common\clusters\src\osConsole.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="common\clusters\src\osIdentifyCluster.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="common\clusters\src\osPdt.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="common\include\appConsts.h">
@@ -206,49 +228,46 @@
     <Compile Include="common\include\zclDevice.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="common\src\commandManager.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="common\src\console.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="common\src\ezModeManager.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="common\src\keyboardPoll.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="common\src\otauService.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="common\src\uartManager.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="configuration.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="console.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="ezModeManager.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="features\occupancySensor\include\osBasicCluster.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="features\occupancySensor\include\osClusters.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="features\occupancySensor\include\osIdentifyCluster.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="features\occupancySensor\include\osOccupancySensingCluster.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="features\occupancySensor\src\occupancySensor.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="features\occupancySensor\src\osBasicCluster.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="features\occupancySensor\src\osClusters.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="features\occupancySensor\src\osConsole.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="features\occupancySensor\src\osIdentifyCluster.c">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="features\occupancySensor\src\osOccupancySensingCluster.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="features\occupancySensor\src\osPdt.c">
+    <Compile Include="features\temperatureSensor\drivers\include\TemperatureHumidityDriver.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="keyboardPoll.c">
+    <Compile Include="features\temperatureSensor\drivers\src\tempHumiditySI7021.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="features\temperatureSensor\drivers\src\tempRFR2OnboardSensor.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="features\temperatureSensor\include\tmpTemperatureMeasurementCluster.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="features\temperatureSensor\src\tmpTemperatureMeasurementCluster.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="lib\BitCloud-Components\APS\include\aps.h">
@@ -1730,10 +1749,10 @@
     <Compile Include="lib\BitCloud-Components\ZLLPlatform\ZLL\S_Nv\src\S_Nv_Stub.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="otauService.c">
+    <Compile Include="buratino.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="uartManager.c">
+    <Compile Include="buratinoClusters.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="zclDevice.c">
@@ -1746,10 +1765,17 @@
     <Folder Include="common\clusters\include\" />
     <Folder Include="common\clusters\src" />
     <Folder Include="common\include\" />
+    <Folder Include="common\src" />
     <Folder Include="features\" />
+    <Folder Include="features\temperatureSensor" />
     <Folder Include="features\occupancySensor\" />
     <Folder Include="features\occupancySensor\include\" />
     <Folder Include="features\occupancySensor\src" />
+    <Folder Include="features\temperatureSensor\drivers\include" />
+    <Folder Include="features\temperatureSensor\drivers\src" />
+    <Folder Include="features\temperatureSensor\include" />
+    <Folder Include="features\temperatureSensor\drivers" />
+    <Folder Include="features\temperatureSensor\src" />
     <Folder Include="lib\" />
     <Folder Include="lib\BitCloud-Components\" />
     <Folder Include="lib\BitCloud-Components\APS\" />

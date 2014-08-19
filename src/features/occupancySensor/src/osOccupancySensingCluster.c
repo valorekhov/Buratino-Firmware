@@ -15,7 +15,8 @@
     History:
     12.12.12 N. Fomin - Created.
 ******************************************************************************/
-#ifdef APP_DEVICE_TYPE_OCCUPANCY_SENSOR
+#include <buratinoSettings.h>
+#ifdef BURATINO_CAPABILITY_OCCUPANCY_SENSOR
 
 /******************************************************************************
                     Includes section
@@ -55,6 +56,6 @@ void occupancySensingToggleOccupancy(void)
   ZCL_ReportOnChangeIfNeeded(&osOccupancySensingClusterServerAttributes.occupancy);
 }
 
-#endif // APP_DEVICE_TYPE_OCCUPANCY_SENSOR
+#endif // BURATINO_CAPABILITY_OCCUPANCY_SENSOR APP_DEVICE_TYPE_OCCUPANCY_SENSOR
 
 // eof osOccupancySensingCluster.c

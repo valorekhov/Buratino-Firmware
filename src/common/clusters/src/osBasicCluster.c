@@ -1,8 +1,8 @@
 /**************************************************************************//**
-  \file osClusters.h
+  \file osBasicCluster.c
 
   \brief
-    Occupancy Sensor clusters interface.
+    Occupancy Sensor Basic cluster implementation.
 
   \author
     Atmel Corporation: http://www.atmel.com \n
@@ -15,33 +15,36 @@
     History:
     12.12.12 N. Fomin - Created.
 ******************************************************************************/
-#ifndef _OSCLUSTER_H
-#define _OSCLUSTER_H
+
+//#ifdef APP_DEVICE_TYPE_OCCUPANCY_SENSOR
 
 /******************************************************************************
                     Includes section
 ******************************************************************************/
-#include <zcl.h>
+#include <osBasicCluster.h>
+#include <basicCluster.h>
 
 /******************************************************************************
-                    Definitions section
+                    Global variables
 ******************************************************************************/
-#define OS_SERVER_CLUSTERS_COUNT     3
-#ifdef OTAU_CLIENT
-  #define OS_CLIENT_CLUSTERS_COUNT   2
-#else
-  #define OS_CLIENT_CLUSTERS_COUNT   1
-#endif
+ZCL_BasicClusterServerAttributes_t osBasicClusterServerAttributes =
+{
+  ZCL_DEFINE_BASIC_CLUSTER_SERVER_ATTRIBUTES()
+};
 
 /******************************************************************************
-                    Externals
+                    Implementation section
 ******************************************************************************/
-extern ZCL_Cluster_t osServerClusters[OS_SERVER_CLUSTERS_COUNT];
-extern ClusterId_t   osServerClusterIds[OS_SERVER_CLUSTERS_COUNT];
+/**************************************************************************//**
+\brief Initializes Basic cluster
+******************************************************************************/
+void basicClusterInit(void)
+{
+  osBasicClusterServerAttributes.zclVersion.value          = 0x01;
+  osBasicClusterServerAttributes.powerSource.value         = 0x04;
+  osBasicClusterServerAttributes.physicalEnvironment.value = 0x00;
+}
 
-extern ZCL_Cluster_t osClientClusters[OS_CLIENT_CLUSTERS_COUNT];
-extern ClusterId_t   osClientClusterIds[OS_CLIENT_CLUSTERS_COUNT];
+//#endif // APP_DEVICE_TYPE_OCCUPANCY_SENSOR
 
-#endif // _OSCLUSTER_H
-
-// eof osClusters.h
+// eof osBasicCluster.c

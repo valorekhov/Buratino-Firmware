@@ -1,8 +1,8 @@
 /**************************************************************************//**
-  \file osBasicCluster.c
+  \file osClusters.h
 
   \brief
-    Occupancy Sensor Basic cluster implementation.
+    Occupancy Sensor clusters interface.
 
   \author
     Atmel Corporation: http://www.atmel.com \n
@@ -15,35 +15,29 @@
     History:
     12.12.12 N. Fomin - Created.
 ******************************************************************************/
-#ifdef APP_DEVICE_TYPE_OCCUPANCY_SENSOR
+#ifndef _OSCLUSTER_H
+#define _OSCLUSTER_H
 
 /******************************************************************************
                     Includes section
 ******************************************************************************/
-#include <osBasicCluster.h>
-#include <basicCluster.h>
+#include <zcl.h>
+#include <buratinoSettings.h>
 
 /******************************************************************************
-                    Global variables
+                    Definitions section
 ******************************************************************************/
-ZCL_BasicClusterServerAttributes_t osBasicClusterServerAttributes =
-{
-  ZCL_DEFINE_BASIC_CLUSTER_SERVER_ATTRIBUTES()
-};
+
 
 /******************************************************************************
-                    Implementation section
+                    Externals
 ******************************************************************************/
-/**************************************************************************//**
-\brief Initializes Basic cluster
-******************************************************************************/
-void basicClusterInit(void)
-{
-  osBasicClusterServerAttributes.zclVersion.value          = 0x01;
-  osBasicClusterServerAttributes.powerSource.value         = 0x04;
-  osBasicClusterServerAttributes.physicalEnvironment.value = 0x00;
-}
+extern ZCL_Cluster_t osServerClusters[BURATINO_SERVER_CLUSTERS_COUNT];
+extern ClusterId_t   osServerClusterIds[BURATINO_SERVER_CLUSTERS_COUNT];
 
-#endif // APP_DEVICE_TYPE_OCCUPANCY_SENSOR
+extern ZCL_Cluster_t osClientClusters[BURATINO_CLIENT_CLUSTERS_COUNT];
+extern ClusterId_t   osClientClusterIds[BURATINO_CLIENT_CLUSTERS_COUNT];
 
-// eof osBasicCluster.c
+#endif // _OSCLUSTER_H
+
+// eof osClusters.h

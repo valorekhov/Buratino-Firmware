@@ -1,27 +1,10 @@
-/**************************************************************************//**
-  \file occupancySensor.h
 
-  \brief
-    Occupancy Sensor implementation.
-
-  \author
-    Atmel Corporation: http://www.atmel.com \n
-    Support email: avr@atmel.com
-
-  Copyright (c) 2008-2014, Atmel Corporation. All rights reserved.
-  Licensed under Atmel's Limited License Agreement (BitCloudTM).
-
-  \internal
-    History:
-    26/12/14 Prashanth.Udumula - modified
-******************************************************************************/
-
-#ifdef APP_DEVICE_TYPE_OCCUPANCY_SENSOR
 
 /******************************************************************************
                              Includes section
 ******************************************************************************/
 #include <osOccupancySensingCluster.h>
+#include "features/temperatureSensor/include/tmpTemperatureMeasurementCluster.h"
 #include <osClusters.h>
 #include <zclDevice.h>
 #include <uartManager.h>
@@ -34,6 +17,7 @@
 #include <haClusters.h>
 #include <otauService.h>
 #include <bspLeds.h>
+#include <buratinoSettings.h>
 
 /******************************************************************************
                              Defines section
@@ -89,6 +73,13 @@ static HAL_AppTimer_t occupancyChangeTimer =
   .callback = occupancySensingToggleOccupancy,
 };
 
+static HAL_AppTimer_t tempMeasurementTimer =
+{
+	.interval = SWITCHING_PERIOD,
+	.mode     = TIMER_REPEAT_MODE,
+	.callback = temperatureMeasurementToggleTemperature,
+};
+
 static SYS_EventReceiver_t zdoBusyPollCheck = { .func = isBusyOrPollCheck};
 
 /******************************************************************************
@@ -109,7 +100,6 @@ void appDeviceInitAfterPowerFailure(void)
 {
   ZCL_RegisterEndpoint(&osEndpoint);
 
-  HAL_StartAppTimer(&occupancyChangeTimer);
 
 #if (APP_ENABLE_CONSOLE == 1) || (APP_DEVICE_EVENTS_LOGGING == 1)
   uartInit();
@@ -118,7 +108,15 @@ void appDeviceInitAfterPowerFailure(void)
   initConsole();
 #endif
 
+#ifdef BURATINO_CAPABILITY_TEMPERATURE_SENSOR
+  HAL_StartAppTimer(&occupancyChangeTimer);
   occupancySensingClusterInit();
+#endif
+#ifdef BURATINO_CAPABILITY_TEMPERATURE_SENSOR
+	HAL_StartAppTimer(&tempMeasurementTimer);
+	temperatureMeasurementClusterInit();
+#endif  
+  
 #if defined (_SLEEP_WHEN_IDLE_) && (APP_ENABLE_CONSOLE != 1)
   SYS_EnableSleepWhenIdle();
 #endif
@@ -155,7 +153,7 @@ void appDeviceTaskHandler(void)
     case DEVICE_INITIAL_STATE:
       {
         appDeviceState = DEVICE_ACTIVE_IDLE_STATE;
-        startOtauClient(&osClientClusters[OS_CLIENT_CLUSTERS_COUNT - 1]);
+        startOtauClient(&osClientClusters[BURATINO_CLIENT_CLUSTERS_COUNT - 1]);
       }
       break;
     case DEVICE_ACTIVE_IDLE_STATE:
@@ -245,5 +243,4 @@ static void isBusyOrPollCheck(SYS_EventId_t eventId, SYS_EventData_t data)
 #endif
 }
 
-#endif // APP_DEVICE_TYPE_OCCUPANCY_SENSOR
-// eof occupancySensor.c
+// eof buratino.c
