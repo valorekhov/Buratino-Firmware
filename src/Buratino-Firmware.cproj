@@ -264,10 +264,13 @@
     <Compile Include="features\temperatureSensor\drivers\src\tempRFR2OnboardSensor.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="features\temperatureSensor\include\rhRelativeHumidityMeasurementCluster.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="features\temperatureSensor\include\tmpTemperatureMeasurementCluster.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="features\temperatureSensor\src\tmpTemperatureMeasurementCluster.c">
+    <Compile Include="features\temperatureSensor\src\tmpTemperatureRhMeasurementCluster.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="lib\BitCloud-Components\APS\include\aps.h">

@@ -77,7 +77,7 @@ static HAL_AppTimer_t tempMeasurementTimer =
 {
 	.interval = SWITCHING_PERIOD,
 	.mode     = TIMER_REPEAT_MODE,
-	.callback = temperatureMeasurementToggleTemperature,
+	.callback = tempRhMeasurementToggleTemperatureAndHumidity,
 };
 
 static SYS_EventReceiver_t zdoBusyPollCheck = { .func = isBusyOrPollCheck};
@@ -108,13 +108,13 @@ void appDeviceInitAfterPowerFailure(void)
   initConsole();
 #endif
 
-#ifdef BURATINO_CAPABILITY_TEMPERATURE_SENSOR
+#ifdef BURATINO_CAPABILITY_TEMPRH_SENSOR
   HAL_StartAppTimer(&occupancyChangeTimer);
   occupancySensingClusterInit();
 #endif
-#ifdef BURATINO_CAPABILITY_TEMPERATURE_SENSOR
+#ifdef BURATINO_CAPABILITY_TEMPRH_SENSOR
 	HAL_StartAppTimer(&tempMeasurementTimer);
-	temperatureMeasurementClusterInit();
+	temperatureRhMeasurementClustersInit();
 #endif  
   
 #if defined (_SLEEP_WHEN_IDLE_) && (APP_ENABLE_CONSOLE != 1)

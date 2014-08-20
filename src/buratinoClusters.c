@@ -5,6 +5,7 @@
 #include <osClusters.h>
 #include <osOccupancySensingCluster.h>
 #include "features/temperatureSensor/include/tmpTemperatureMeasurementCluster.h"
+#include "features/temperatureSensor/include/rhRelativeHumidityMeasurementCluster.h"
 #include <osBasicCluster.h>
 #include <osIdentifyCluster.h> 
 #include <buratinoSettings.h>
@@ -19,8 +20,9 @@ ZCL_Cluster_t osServerClusters[BURATINO_SERVER_CLUSTERS_COUNT] =
 #ifdef BURATINO_CAPABILITY_OCCUPANCY_SENSOR  
   DEFINE_OCCUPANCY_SENSING_CLUSTER(ZCL_SERVER_CLUSTER_TYPE, &osOccupancySensingClusterServerAttributes, NULL),
 #endif
-#ifdef BURATINO_CAPABILITY_TEMPERATURE_SENSOR
+#ifdef BURATINO_CAPABILITY_TEMPRH_SENSOR
  ZCL_DEFINE_TEMPERATURE_MEASUREMENT_CLUSTER_SERVER(&tmpTemperatureMeasurementClusterServerAttributes),
+ ZCL_DEFINE_HUMIDITY_MEASUREMENT_CLUSTER_SERVER(&rhHumidityMeasurementClusterServerAttributes),
 #endif
 };
 
@@ -36,8 +38,9 @@ ClusterId_t osServerClusterIds[BURATINO_SERVER_CLUSTERS_COUNT] =
 #ifdef BURATINO_CAPABILITY_OCCUPANCY_SENSOR  
   OCCUPANCY_SENSING_CLUSTER_ID,
 #endif
-#ifdef BURATINO_CAPABILITY_TEMPERATURE_SENSOR
-  TEMPERATURE_MEASUREMENT_CLUSTER_ID
+#ifdef BURATINO_CAPABILITY_TEMPRH_SENSOR
+  TEMPERATURE_MEASUREMENT_CLUSTER_ID,
+  HUMIDITY_MEASUREMENT_CLUSTER_ID
 #endif
 };
 

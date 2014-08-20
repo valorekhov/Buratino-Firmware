@@ -9,13 +9,13 @@
 #ifndef TEMPERATUREHUMIDITYDRIVER_H_
 #define TEMPERATUREHUMIDITYDRIVER_H_
 
-#define TEMPERATURE_READING_UNDEFINED 0xFFFFL
-#define RELATIVE_HUMIDITY_READING_UNDEFINED 0xFFFFL
+#define TEMPERATURE_READING_UNDEFINED 0xffff
+#define RELATIVE_HUMIDITY_READING_UNDEFINED 0xffff
 
 void BSP_TempHumidityInitDevice();
 //returns temp in C as an int of 0.01C precision
 int16_t BSP_TempHumidityReadTemperature();
-//returns relative humidity as an int, with 0.1% precision 
+//returns relative humidity as an int, with 0.01% precision 
 uint16_t BSP_TempHumidityReadRelativeHumidity();
 
 

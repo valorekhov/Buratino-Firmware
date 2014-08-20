@@ -1,22 +1,22 @@
-#ifndef _TMPTEMPERATUREMEASUREMENTCLUSTER_H
-#define _TMPTEMPERATUREMEASUREMENTCLUSTER_H
+#ifndef _RHRELATIVEHUMIDITYMEASUREMENTCLUSTER_H
+#define _RHRELATIVEHUMIDITYMEASUREMENTCLUSTER_H
 
 /******************************************************************************
                     Includes section
 ******************************************************************************/
-#include <zclTemperatureMeasurementCluster.h>
+#include <zclHumidityMeasurementCluster.h>
 
 /******************************************************************************
                     Definition(s) section
 ******************************************************************************/
-#define TEMPERATURE_MEASUREMENT_VAL_MIN_REPORT_PERIOD 10
-#define TEMPERATURE_MEASUREMENT_VAL_MAX_REPORT_PERIOD 20
+#define HUMIDITY_MEASUREMENT_VAL_MIN_REPORT_PERIOD 10
+#define HUMIDITY_MEASUREMENT_VAL_MAX_REPORT_PERIOD 20
 
 /******************************************************************************
                     Externals
 ******************************************************************************/
 
-extern ZCL_TemperatureMeasurementClusterAttributes_t  tmpTemperatureMeasurementClusterServerAttributes;
+extern ZCL_HumidityMeasurementClusterAttributes_t  rhHumidityMeasurementClusterServerAttributes;
 
 /******************************************************************************
                     Prototypes section
@@ -24,13 +24,13 @@ extern ZCL_TemperatureMeasurementClusterAttributes_t  tmpTemperatureMeasurementC
 /**************************************************************************//**
 \brief Initializes Temperature Measurement cluster
 ******************************************************************************/
-void temperatureRhMeasurementClustersInit(void);
+void humidityMeasurementClusterInit(void);
 
 /**************************************************************************//**
 \brief Toggles Temperature
 ******************************************************************************/
-void tempRhMeasurementToggleTemperatureAndHumidity(void);
+void humidityMeasurementToggleTemperature(void);
 
-#endif // _TMPTEMPERATUREMEASUREMENTCLUSTER_H
+#endif // _RHRELATIVEHUMIDITYMEASUREMENTCLUSTER_H
 
-// eof tmpTemperatureMeasurementCluster.h
+// eof rhRelativeHumidityMeasurementCluster.h

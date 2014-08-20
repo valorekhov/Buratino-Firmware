@@ -396,6 +396,17 @@ int main(void)
 
   halInitThirdLed();
   halOffThirdLed();
+  
+  	int i = 0;
+  	GPIO_D0_make_out();
+  	i = 1;
+  	//GPIO_D0_set();
+  	//i = 0;
+  	//GPIO_D0_clr();
+  	//
+  	GPIO_D1_make_out();
+  	GPIO_D1_set();
+  	//GPIO_D1_clr();
 
   SYS_SysInit();
 

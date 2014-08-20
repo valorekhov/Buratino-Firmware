@@ -23,7 +23,7 @@ metadata {
         capability "Configuration"
 
 		//fingerprint inClusters: "0000,0003,0406", profileId: "0104", outClusters: "0003"
-        fingerprint inClusters: "0000,0003,0402", profileId: "0104", outClusters: "0003" //0405 = humidity
+        fingerprint inClusters: "0000,0003,0402,0405", profileId: "0104", outClusters: "0003" 
 	}
 
 	// simulator metadata
@@ -67,7 +67,7 @@ metadata {
 
 // parse events into attributes
 def parse(String description) {
-     log.trace "$description"
+     //log.trace "$description"
      def msg = zigbee.parse(description)
      
      if (msg != null && msg.clusterId == 0x0406 && msg.sourceEndpoint == 0x13){
@@ -78,19 +78,18 @@ def parse(String description) {
      }
      
      def name = parseName(description)
-	 def value = parseValue(description)
-	 def unit = name == "temperature" ? getTemperatureScale() : (name == "humidity" ? "%" : null)
+	 def value = parseValue(description)     
+	 def unit = name == "temperature" ? getTemperatureScale() : (name == "humidity" ? "%" : null)     
 	 def result = createEvent(name: name, value: value, unit: unit)
-	 //log.debug "Parse returned ${result?.descriptionText}"
+	 log.trace "${result?.descriptionText}"
 	 return result
 }
 
 
 def refresh() {
-	//log.debug "rattr 0x${device.deviceNetworkId} 0x13 0x0406 0"
     //"st rattr 0x${device.deviceNetworkId} 0x13 0x0406 0"
     "st rattr 0x${device.deviceNetworkId} 0x13 0x0402 0"
-    //"st rattr 0x${device.deviceNetworkId} 0x13 0x0405 0"
+    "st rattr 0x${device.deviceNetworkId} 0x13 0x0405 0"
 }
 
 
@@ -98,8 +97,8 @@ def configure() {
 	log.trace "Binding ZDO"
     [
         //"zdo bind 0x${device.deviceNetworkId} 0x13 0x14 0x0406 {${device.zigbeeId}} {}"
-        "zdo bind 0x${device.deviceNetworkId} 0x13 0x14 0x0402 {${device.zigbeeId}} {}"
-        //"zdo bind 0x${device.deviceNetworkId} 0x13 0x14 0x0405 {${device.zigbeeId}} {}"
+        "zdo bind 0x${device.deviceNetworkId} 0x13 0x14 0x0402 {${device.zigbeeId}} {}",
+        "zdo bind 0x${device.deviceNetworkId} 0x13 0x14 0x0405 {${device.zigbeeId}} {}"
     ]
 }
 
@@ -118,7 +117,11 @@ private String parseValue(String description) {
 	} else if (description?.startsWith("humidity: ")) {
 		def pct = (description - "humidity: " - "%").trim()
 		if (pct.isNumber()) {
-			return Math.round(new BigDecimal(pct)).toString()
+        	//ST hub performs RH Zigbee Cluster conversion not to ZCL spec.
+            //accroding to ZCL, 10,000 (0x2710) value represents 100.00% humidity
+            //yet ST stack reports this value as 39%
+            //scale the value by * 2.5641 to correct
+			return Math.round(new BigDecimal(pct)* 2.5641).toString()
 		}
 	}
 	null

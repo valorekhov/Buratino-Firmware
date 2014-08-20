@@ -6,7 +6,7 @@
  */ 
 
 #include <buratinoSettings.h>
-#if BURATINO_CAPABILITY_TEMPERATURE_SENSOR == BURATINO_PLATFORM_TEMPERATURE_SENSOR_ONCHIP
+#if BURATINO_CAPABILITY_TEMPRH_SENSOR == BURATINO_PLATFORM_TEMPERATURE_SENSOR_ONCHIP
 #include "../include/TemperatureHumidityDriver.h"
 
 static int16_t currentReading;

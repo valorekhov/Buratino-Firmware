@@ -7,31 +7,14 @@
 
 
 #include <buratinoSettings.h>
-#if BURATINO_CAPABILITY_TEMPERATURE_SENSOR == BURATINO_PLATFORM_TEMPERATURE_SENSOR_SI7021
+#if BURATINO_CAPABILITY_TEMPRH_SENSOR == BURATINO_PLATFORM_TEMPERATURE_SENSOR_SI7021
 #include "../include/TemperatureHumidityDriver.h"
-#include <i2cPacket.h>
+#include <halFCPU.h>
+#include <compat/twi.h>
+#include <halTwi.h>
 
-/* Si7021 CMD Code */
-#define Measure_RH_M      0xE5
-#define Measure_RH_NM     0xF5
-#define Measure_T_M       0xE3
-#define Measure_T_M       0xF3
-#define Read_Temp_RH      0xE0
-#define RESET             0xFE
-#define Write_RH_T_REG    0xE6
-#define Read_RH_T_REG     0xE7
-#define Read_ID_1_1       0xFA
-#define Read_ID_1_2       0x0F
-#define Read_ID_2_1       0xFC
-#define Read_ID_2_2       0xC9
-#define Read_Rev_1        0x84
-#define Read_Rev_2        0xB8
-
-/* ID Register */
-#define ID_SI7021         0x15
-
-#define WAKE_UP_TIME      15
-#define SI7021_ADR        0x40
+#define SI7021_ADR        0x40<<1
+#define BSP_UID_I2C_PRESCALER     0
 
 /* Coefficients */
 #define TEMPERATURE_OFFSET   46.85
@@ -42,77 +25,87 @@
 #define HUMIDITY_SLOPE       65536
 
 
+#define TWI_PRE     1        // my TWI prescaler value
+#define TWI_FREQ    100000   // my TWI bit rate
+
 /* Variables */
-static uint8_t buffer[32];
-static HAL_I2cDescriptor_t i2c;
+static uint32_t currentTempReading = 0;
+static uint32_t currentRhReading = RELATIVE_HUMIDITY_READING_UNDEFINED;
 
-static uint8_t currentTempReading = 0;
-static uint8_t currentRhReading = 0;
-
-// Initialization steps
-typedef enum {
-	CLOSED = 0,
-	FIRST_STEP,        // Initialize register 1
-	SECOND_STEP,       // Initialize register 2
-	THIRD_STEP,         // Enable READY IRQ
-	OPEN
-} step_t;
-static step_t currentStep = CLOSED;
-
-/* Methods */
-
-/* last step complete, do the next one */
-void doneStep(bool result)
+uint8_t twi_poll (uint8_t u)
 {
-	if (result)
-	doStep(++currentStep);
+	TWCR = u | _BV(TWINT) | _BV(TWEN);  // initiate a TWI transmission
+	if (u == _BV(TWSTO)) return 0;      // don't poll if the STOP condition was sent
+	while ((TWCR & _BV(TWINT)) == 0) ;      // wait for the interrupt flag to be set
+	return (TWSR & 0xf8);               // return the status code
 }
 
-/* Perform initialization step */
-void doStep(step_t step)
+uint8_t twi_receive16  (uint8_t sla, uint8_t cmd, uint8_t *msb, uint8_t *lsb)
 {
-	switch(currentStep) {
-		case FIRST_STEP:
-			buffer[0] = 0x01;
-			i2c.length = 1;
-			i2c.internalAddr = 0x01;
-			HAL_WriteI2cPacket(&i2c);
-		break;
-
-		case SECOND_STEP:
-			buffer[0] = 0x02;
-			i2c.length = 1;
-			i2c.internalAddr = 0x02;
-			HAL_WriteI2cPacket(&i2c);
-		break;
-
-		case THIRD_STEP:
-		//HAL_RegisterIrq(IRQ_6, IRQ_ANY_EDGE, sensorReadyHandler);
-		//HAL_EnableIrq(IRQ_6);
-		currentStep++;
-		break;
-	}
+	uint8_t u, status = 0;
+	u = twi_poll(_BV(TWSTA));                    // send START
+	if (u != TW_START && u != TW_REP_START) return 0;
+	TWDR = sla | TW_WRITE;                       // send SLA+W
+	u = twi_poll(0);
+	if (u != TW_MT_SLA_ACK) goto release;
+	TWDR = cmd;                                  // send command
+	if (twi_poll(0) != TW_MT_DATA_ACK) goto release;
+	if (twi_poll(_BV(TWSTA)) != TW_REP_START) goto release; // send RESTART
+	TWDR = sla | TW_READ;                        // send SLA+R
+	if (twi_poll(0) != TW_MR_SLA_ACK) goto release;
+	if (twi_poll(_BV(TWEA)) != TW_MR_DATA_ACK) goto release;
+	*msb = TWDR;                                 // read msb
+	if (twi_poll(0) != TW_MR_DATA_NACK) goto release;
+	*lsb = TWDR;                                 // read lsb
+	status = 1;                                  // success
+release:
+	twi_poll(_BV(TWSTO));                        // send STOP
+	return status;
 }
 
-void BSP_TempHumidityInitDevice(){
-	if (currentStep == CLOSED) {
-		memset(0x00, &buffer[0], sizeof(buffer));
-		i2c.tty = TWI_CHANNEL_0;
-		i2c.clockRate = I2C_CLOCK_RATE_62;
-		i2c.lengthAddr = HAL_ONE_BYTE_SIZE;
-		i2c.id = SI7021_ADR;
-
-		i2c.data = &buffer[0];
-		i2c.f = doneStep;
-		HAL_OpenI2cPacket(&i2c);
-	}
+void twiOn(){
+	
+	TWCR = 0x00;
+	TWSR = BSP_UID_I2C_PRESCALER; // prescaler
+	// Set 250 Kb/s clock rate
+	TWBR = ((F_CPU/62500ul) - 16ul)/(2ul * (1ul << HAL_I2C_PRESCALER) * (1ul << HAL_I2C_PRESCALER));
+	TWCR &= (~(1 << TWIE));
 }
+
+#define twiOff() TWCR = 0x00;
+
+void BSP_TempHumidityInitDevice(){	
+}
+
+
 //returns temp in C as an int of 0.01C precision
 int16_t BSP_TempHumidityReadTemperature(){
-	
+	uint8_t msb,lsb;
+	//Instruct the chip to reuse temp value from prior RH measurement (if one was performed, indicated by currentRhReading != 0xFF) using 0xE0 command
+	//	or, initiate a new temp reading by the 0xE3 command
+	twiOn();
+	if (twi_receive16(SI7021_ADR, currentRhReading != RELATIVE_HUMIDITY_READING_UNDEFINED  ? 0xE0 :  0xE3, &msb, &lsb)){
+		currentTempReading = msb << 8 | lsb; 	
+		currentTempReading = ((currentTempReading * TEMPERATURE_MULTIPLE ) / TEMPERATURE_SLOPE - TEMPERATURE_OFFSET) * 100; 		
+	}
+	else{
+		currentTempReading = TEMPERATURE_READING_UNDEFINED;
+	}
+	twiOff();
+	return currentTempReading;
 }
-//returns relative humidity as an int, with 0.1% precision
+//returns relative humidity as an int, with 0.01% precision
 uint16_t BSP_TempHumidityReadRelativeHumidity(){
-	return RELATIVE_HUMIDITY_READING_UNDEFINED;
+	uint8_t msb,lsb;
+	twiOn();
+	if (twi_receive16(SI7021_ADR, 0xE5, &msb, &lsb)){
+		currentRhReading = msb << 8 | lsb;
+		currentRhReading = currentRhReading >= 0xFFF0 ? 0x2710 : ((currentRhReading * HUMIDITY_MULTIPLE ) / HUMIDITY_SLOPE  - HUMIDITY_OFFSET) * 100;		
+	} else{
+		currentRhReading = RELATIVE_HUMIDITY_READING_UNDEFINED;
+	}
+	twiOff();
+	return currentRhReading;
 }
+
 #endif
