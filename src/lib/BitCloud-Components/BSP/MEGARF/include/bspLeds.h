@@ -83,6 +83,48 @@
   #define halReadThirdLed()       GPIO_G2_read()
   #define halToggleThirdLed()     GPIO_G2_toggle()
 
+#elif BSP_SUPPORT == BOARD_ATMEGA256RFR2_XPRO
+	#define halInitFirstLed()       GPIO_D6_make_out()
+	#define halUnInitFirstLed()     GPIO_D6_make_in()
+	#define halOnFirstLed()         GPIO_D6_clr()
+	#define halOffFirstLed()        GPIO_D6_set()
+	#define halReadFirstLed()       GPIO_D6_read()
+	#define halToggleFirstLed()     GPIO_D6_toggle()
+
+	#define halInitSecondLed()       GPIO_E2_make_out()
+	#define halUnInitSecondLed()     GPIO_E2_make_in()
+	#define halOnSecondLed()         GPIO_E2_clr()
+	#define halOffSecondLed()        GPIO_E2_set()
+	#define halReadSecondLed()       GPIO_E2_read()
+	#define halToggleSecondLed()     GPIO_E2_toggle()
+
+	#define halInitThirdLed()       GPIO_G2_make_out()
+	#define halUnInitThirdLed()     GPIO_G2_make_in()
+	#define halOnThirdLed()         GPIO_G2_clr()
+	#define halOffThirdLed()        GPIO_G2_set()
+	#define halReadThirdLed()       GPIO_G2_read()
+	#define halToggleThirdLed()     GPIO_G2_toggle()
+#elif BSP_SUPPORT == BOARD_BURATINO
+	#define halInitFirstLed()       GPIO_B4_make_out()
+	#define halUnInitFirstLed()     GPIO_B4_make_in()
+	#define halOnFirstLed()         GPIO_B4_clr()
+	#define halOffFirstLed()        GPIO_B4_set()
+	#define halReadFirstLed()       GPIO_B4_read()
+	#define halToggleFirstLed()     GPIO_B4_toggle()
+
+	#define halInitSecondLed()       GPIO_B5_make_out()
+	#define halUnInitSecondLed()     GPIO_B5_make_in()
+	#define halOnSecondLed()         GPIO_B5_clr()
+	#define halOffSecondLed()        GPIO_B5_set()
+	#define halReadSecondLed()       GPIO_B5_read()
+	#define halToggleSecondLed()     GPIO_B5_toggle()
+
+	#define halInitThirdLed()       GPIO_B6_make_out()
+	#define halUnInitThirdLed()     GPIO_B6_make_in()
+	#define halOnThirdLed()         GPIO_B6_clr()
+	#define halOffThirdLed()        GPIO_B6_set()
+	#define halReadThirdLed()       GPIO_B6_read()
+	#define halToggleThirdLed()     GPIO_B6_toggle()
 #endif // BSP_SUPPORT
 #endif /*_BSPLEDS_H*/
 // eof bspLeds.h

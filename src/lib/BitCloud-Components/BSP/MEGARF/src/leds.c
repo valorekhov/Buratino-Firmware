@@ -305,7 +305,7 @@ void BSP_SetLedBrightnessLevel(uint8_t level)
 #else
   /* for RCB and Xplained_PRO boards */
   uint8_t id = LED_THIRD;
-  #if BSP_SUPPORT == BOARD_ATMEGA256RFR2_XPRO
+  #if BSP_SUPPORT == BOARD_ATMEGA256RFR2_XPRO || BSP_SUPPORT == BOARD_BURATINO
     id = LED_FIRST;
   #endif
   if (level)

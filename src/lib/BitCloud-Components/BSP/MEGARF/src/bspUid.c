@@ -254,6 +254,12 @@ void bspReadUid(void)
   NEMCR = 0x40;
   ATOMIC_SECTION_LEAVE
 }
+
+#elif BSP_SUPPORT == BOARD_BURATINO
+void bspReadUid(void)
+{
+	bspUid.uid = 0;
+}
 #endif
 
 /******************************************************************************

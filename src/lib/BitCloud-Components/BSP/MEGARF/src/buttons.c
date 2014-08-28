@@ -37,7 +37,7 @@
   #define RELEASED          0
   #define BSP_BUTTONS_IDLE  0
   #define BSP_BUTTONS_BUSY  1
-#elif BSP_SUPPORT == BOARD_ATMEGA256RFR2_XPRO
+#elif BSP_SUPPORT == BOARD_ATMEGA256RFR2_XPRO || BSP_SUPPORT == BOARD_BURATINO
   #define BSP_readKEY0()    GPIO_E4_read()
   #define PRESSED           1
   #define RELEASED          0

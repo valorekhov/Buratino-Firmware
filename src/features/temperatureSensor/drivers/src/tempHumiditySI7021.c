@@ -100,7 +100,8 @@ uint16_t BSP_TempHumidityReadRelativeHumidity(){
 	twiOn();
 	if (twi_receive16(SI7021_ADR, 0xE5, &msb, &lsb)){
 		currentRhReading = msb << 8 | lsb;
-		currentRhReading = currentRhReading >= 0xFFF0 ? 0x2710 : ((currentRhReading * HUMIDITY_MULTIPLE ) / HUMIDITY_SLOPE  - HUMIDITY_OFFSET) * 100;		
+		//currentRhReading = currentRhReading >= 0xFFF0 ? 0x2710 : ((currentRhReading * HUMIDITY_MULTIPLE ) / HUMIDITY_SLOPE  - HUMIDITY_OFFSET) * 100;		
+		currentRhReading = ((currentRhReading * HUMIDITY_MULTIPLE ) / HUMIDITY_SLOPE  - HUMIDITY_OFFSET) * 100;		
 	} else{
 		currentRhReading = RELATIVE_HUMIDITY_READING_UNDEFINED;
 	}

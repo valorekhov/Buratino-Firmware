@@ -389,7 +389,8 @@ int main(void)
 {
 
   halInitFirstLed();
-  //halOnFirstLed();
+  //halOffFirstLed();
+  halOnFirstLed();
 
   halInitSecondLed();
   halOffSecondLed();

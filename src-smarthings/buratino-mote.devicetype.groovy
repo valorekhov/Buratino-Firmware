@@ -116,12 +116,8 @@ private String parseValue(String description) {
 		return zigbee.parseHATemperatureValue(description, "temperature: ", getTemperatureScale())
 	} else if (description?.startsWith("humidity: ")) {
 		def pct = (description - "humidity: " - "%").trim()
-		if (pct.isNumber()) {
-        	//ST hub performs RH Zigbee Cluster conversion not to ZCL spec.
-            //accroding to ZCL, 10,000 (0x2710) value represents 100.00% humidity
-            //yet ST stack reports this value as 39%
-            //scale the value by * 2.5641 to correct
-			return Math.round(new BigDecimal(pct)* 2.5641).toString()
+		if (pct.isNumber()) {        	
+			return Math.round(new BigDecimal(pct)).toString()
 		}
 	}
 	null
